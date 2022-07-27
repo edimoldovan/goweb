@@ -23,7 +23,9 @@ func indexPage() http.HandlerFunc {
 			return
 		}
 		var buf bytes.Buffer
-		if err := tmpl.ExecuteTemplate(&buf, "default", map[string]interface{}{}); err != nil {
+		if err := tmpl.ExecuteTemplate(&buf, "default", map[string]interface{}{
+			"Title": "Web app with Go std",
+		}); err != nil {
 			fmt.Printf("ERR: %v\n", err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

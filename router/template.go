@@ -2,11 +2,12 @@ package router
 
 import "html/template"
 
+// keeping for now as example
 var defaultFuncs = template.FuncMap{
-	"Title": func(ip interface{}) string {
+	"tmplFunctionExample": func(ip interface{}) string {
 		v, ok := ip.(string)
 		if !ok || (ok && v == "") {
-			return "Web app with Go std"
+			return "some text"
 		}
 		return v
 	},
