@@ -1,21 +1,15 @@
 package router
 
-import "html/template"
-
-// keeping for now as example
-var defaultFuncs = template.FuncMap{
-	"tmplFunctionExample": func(ip interface{}) string {
-		v, ok := ip.(string)
-		if !ok || (ok && v == "") {
-			return "some text"
-		}
-		return v
-	},
-}
-var templateFiles = []string{
-	"./views/pages/default.html",
-}
-
-func tmplLayout(files ...string) []string {
-	return append(templateFiles, files...)
+func getTemplates() []string {
+	// currently used templates
+	// for now we declare them here upfront
+	var templateFiles = []string{
+		// pages
+		"./views/pages/default.html",
+		// layluts
+		"./views/layouts/home.html",
+		// partials
+		"./views/partials/box.html",
+	}
+	return append(templateFiles)
 }

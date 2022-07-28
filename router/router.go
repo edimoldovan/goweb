@@ -8,15 +8,17 @@ import (
 	"net/http"
 )
 
+var tmpl *template.Template
+
 func New() http.Handler {
+	templateFiles := getTemplates()
+	tmpl, _ = template.ParseFiles(templateFiles...)
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", indexPage())
 	return mux
 }
 
 func indexPage() http.HandlerFunc {
-	files := tmplLayout("./views/layouts/index.html")
-	tmpl := template.Must(template.New("index").Funcs(defaultFuncs).ParseFiles(files...))
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" || r.Method != http.MethodGet {
 			http.NotFound(w, r)
