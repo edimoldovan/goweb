@@ -1,6 +1,6 @@
-package router
+package utilities
 
-func getTemplates() []string {
+func GetTemplates() []string {
 	// currently used templates
 	// for now we declare them here upfront
 	var templateFiles = []string{
@@ -11,5 +11,5 @@ func getTemplates() []string {
 		// partials
 		"./views/partials/box.html",
 	}
-	return append(templateFiles)
+	return templateFiles
 }
