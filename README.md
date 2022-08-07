@@ -1,4 +1,4 @@
-# go-njwf
+# gweb
 A simple web framework based on go std, server side includes and javascript import maps
 
 ## usage
