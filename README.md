@@ -6,7 +6,7 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 
 ## features
 
-- watch and restart the server with `air` (TODO: it doesn't watch the server.go file, fix later)
+- watch and restart the server with `air`
 - simple [router](https://github.com/julienschmidt/httprouter) for convenince and developer experience 
 - built in go templates for rendering nested html templates
 - serve static files from `public` folder 

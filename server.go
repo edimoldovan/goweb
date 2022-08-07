@@ -17,9 +17,7 @@ func main() {
 	tmpl, _ = template.ParseFiles(templateFiles...)
 	router := httprouter.New()
 	router.GET("/", Home)
-
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
-
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
