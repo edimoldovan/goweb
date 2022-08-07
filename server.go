@@ -18,7 +18,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", Home)
 
-	router.ServeFiles("/static/*filepath", http.Dir("/Users/ed/dev/go/gweb/public"))
+	router.ServeFiles("/static/*filepath", http.Dir("./public"))
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
