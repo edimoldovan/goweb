@@ -17,6 +17,9 @@ func main() {
 	tmpl, _ = template.ParseFiles(templateFiles...)
 	router := httprouter.New()
 	router.GET("/", Home)
+
+	router.ServeFiles("/static/*filepath", http.Dir("/Users/ed/dev/go/gweb/public"))
+
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
