@@ -9,7 +9,9 @@ func GetTemplates() []string {
 		// layluts
 		"./views/layouts/home.html",
 		// partials
-		"./views/partials/box.html",
+		"./views/partials/header.html",
+		"./views/partials/products.html",
+		"./views/partials/tools.html",
 	}
 	return templateFiles
 }
