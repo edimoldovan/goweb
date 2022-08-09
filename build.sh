@@ -10,5 +10,8 @@
 # echo 'minifying private css...';
 # minify public/private.css -o public/private.min.css;
 
+echo 'minifying style css...';
+minify public/style.css -o public/style.min.css;
+
 # /usr/local/go/bin/go build -o ./tmp/main .
 go build -o ./tmp/main .
