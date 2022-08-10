@@ -1,6 +1,14 @@
 {{define "home"}}
-{{template "header" .}}
-{{template "products" .}}
-{{template "prose" .}}
-{{template "tools" .}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "head" .}}
+<body>
+  <main class="flow">
+    {{template "header" .}}
+    {{template "products" .}}
+    {{template "prose" .}}
+    {{template "tools" .}}
+  </div>
+</body>
+</html>
 {{end}}

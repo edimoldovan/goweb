@@ -17,13 +17,24 @@ func main() {
 	tmpl, _ = template.ParseFiles(templateFiles...)
 	router := httprouter.New()
 	router.GET("/", Home)
+	router.GET("/blog-home", BlogHome)
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
 func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	if err := tmpl.ExecuteTemplate(w, "default", map[string]interface{}{
+	if err := tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
 		"Title": "Web app with Go std",
+	}); err != nil {
+		fmt.Printf("ERR: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	if err := tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
+		"Title": "Blog -- Home",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)

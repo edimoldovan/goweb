@@ -13,5 +13,8 @@
 echo 'minifying style css...';
 minify assets/style.css -o public/style.min.css;
 
+echo 'minifying blog css...';
+minify assets/blog.css -o public/blog.min.css;
+
 # /usr/local/go/bin/go build -o ./tmp/main .
 go build -o ./tmp/main .
