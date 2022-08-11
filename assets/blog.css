@@ -120,34 +120,7 @@ select {
   --tw-backdrop-sepia: ;
   box-sizing:border-box
 }
-blockquote,body,dd,dl,figure,h1,h2,h3,h4,p{
-  margin:0
-}
-ol[role=list],ul[role=list]{
-  list-style:none
-}
-html{
-  text-size-adjust:none;
-  -webkit-text-size-adjust:none
-}
-html:focus-within{
-  scroll-behavior:smooth
-}
-body{
-  text-rendering:optimizeSpeed;
-  line-height:1.5;
-  min-height:100vh
-}
-a:not([class]){
-  text-decoration-skip-ink:auto
-}
-img,picture{
-  display:block;
-  max-width:100%
-}
-button,input,select,textarea{
-  font:inherit
-}
+
 :root{
   --font-family-heading: 'Poppins', sans-serif;
   --color-dark:#1c1b1d;
@@ -209,6 +182,7 @@ h1{
 }
 h2{
   font-size: var(--size-step-3);
+  line-height: 1;
 }
 h3{
   font-size: var(--size-step-2);
@@ -320,15 +294,30 @@ header > nav{
   --flow-space:var(--space-l-xl);
   --wrapper-max-width:55rem
 }
-.prose :is(h2,h3,h4)+*{
-  --flow-space:var(--space-s-m)
+
+.prose h2 {
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-s);
+}
+
+.prose p {
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-s);
+}
+
+.prose :is(h2,h3,h4) +* {
+  --flow-space:var(--space-s-m);
+}
+.prose pre {
+  overflow-x: scroll;
+  font-size:var(--size-step-1);
 }
 .prose blockquote{
   border-inline-start:10px solid var(--color-secondary);
   font-family:var(--font-serif);
   font-size:var(--size-step-2);
   font-style:italic;
-  padding:var(--space-m-l)
+  padding:var(--space-m-l);
 }
 .prose blockquote>*+*{
   margin-top:var(--space-m-l)

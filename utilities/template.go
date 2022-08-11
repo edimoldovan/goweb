@@ -7,6 +7,7 @@ func GetTemplates() []string {
 		// layluts
 		"./views/layouts/home.html",
 		"./views/layouts/bloghome.html",
+		"./views/layouts/blogpost.html",
 		// partials
 		"./views/partials/head.html",
 		"./views/partials/header.html",
@@ -19,6 +20,7 @@ func GetTemplates() []string {
 		"./views/partials/blogmain.html",
 		"./views/partials/blogpostlist.html",
 		"./views/partials/blogfooter.html",
+		"./views/partials/blogpostpartial.html",
 	}
 	return templateFiles
 }
