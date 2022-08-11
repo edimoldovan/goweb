@@ -272,14 +272,19 @@ main:focus{
   font-weight: bold;
 }
 
+header > nav{
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-m-l);
+}
 
 
-.card{
-  background:var(--color-dark);
-  border-radius:var(--border-radius);
-  color:var(--color-light);
-  max-width:unset;
-  padding:var(--space-m-l)
+.card {
+  background: var(--color-dark);
+  border-radius: var(--border-radius);
+  color: var(--color-light);
+  max-width: unset;
+  padding: var(--space-m-l);
 }
 .card ::selection{
   background:var(--color-secondary);
