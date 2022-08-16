@@ -19,6 +19,7 @@ func main() {
 	router.GET("/", Home)
 	router.GET("/blog-home", BlogHome)
 	router.GET("/posts/:link", BlogPost)
+	router.GET("/posts", BlogPosts)
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
@@ -47,6 +48,16 @@ func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
 	if err := tmpl.ExecuteTemplate(w, "blogpost", map[string]interface{}{
 		"Title": "Blog -- Post Title",
+	}); err != nil {
+		fmt.Printf("ERR: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	if err := tmpl.ExecuteTemplate(w, "blogposts", map[string]interface{}{
+		"Title": "Blog -- Post Lists",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
