@@ -5,6 +5,7 @@ import (
 	"log"
 	"main/utilities"
 	"net/http"
+	"os"
 	"text/template"
 
 	"github.com/BurntSushi/toml"
@@ -44,6 +45,7 @@ func loadConfig() {
 
 	// examples of config use
 	// log.Println("PostGres URL:", config.PostGresConnectURL)
+
 	// log.Println("Base URL:", config.BaseUrl)
 	// log.Println("Jsimports:", config.Jsimports[0].Name)
 	// log.Println("Jsimports:", config.Jsimports[0].Path)
@@ -70,8 +72,9 @@ func main() {
 
 func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
-		"Title":      "Web app with Go std",
-		"Importmaps": config.Importmaps,
+		"Title":       "Web app with Go std",
+		"Importmaps":  config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -81,8 +84,9 @@ func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
-		"Title":      "Blog -- Home",
-		"Importmaps": config.Importmaps,
+		"Title":       "Blog -- Home",
+		"Importmaps":  config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -93,8 +97,9 @@ func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
 	if err := tmpl.ExecuteTemplate(w, "blogpost", map[string]interface{}{
-		"Title":      "Blog -- Post Title",
-		"Importmaps": config.Importmaps,
+		"Title":       "Blog -- Post Title",
+		"Importmaps":  config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -104,8 +109,9 @@ func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "blogposts", map[string]interface{}{
-		"Title":      "Blog -- Post Lists",
-		"Importmaps": config.Importmaps,
+		"Title":       "Blog -- Post Lists",
+		"Importmaps":  config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
