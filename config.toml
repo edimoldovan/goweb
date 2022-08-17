@@ -1,0 +1,9 @@
+postgres_connect_url = "some postgres connection url"
+base_url = "https://some.base.url"
+base_domain = "some.base.url"
+
+public_importmaps = [
+	{ name = "flatpickr", path = "/static/js/flatpickr.min.js" }
+]
+
+private_importmaps = []

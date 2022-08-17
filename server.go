@@ -7,14 +7,59 @@ import (
 	"net/http"
 	"text/template"
 
+	"github.com/BurntSushi/toml"
 	"github.com/julienschmidt/httprouter"
 )
+
+type Post struct {
+	Published string
+	Title     string
+	Url       string
+	Image     string
+	Lead      string
+}
+
+type importmap struct {
+	Name string
+	Path string
+}
+
+type tomlConfig struct {
+	PostGresConnectURL string      `toml:"postgres_connect_url"`
+	BaseUrl            string      `toml:"base_url"`
+	BaseDomain         string      `toml:"base_domain"`
+	PublicImportmaps   []importmap `toml:"public_importmaps"`
+	PrivateImportmaps  []importmap `toml:"private_importmaps"`
+}
+
+var (
+	config tomlConfig
+)
+
+func loadConfig() {
+	f := "./config.toml"
+
+	if _, err := toml.DecodeFile(f, &config); err != nil {
+		log.Fatalln("Reading config failed", err)
+	}
+
+	// examples of config use
+	// log.Println("PostGres URL:", config.PostGresConnectURL)
+	// log.Println("Base URL:", config.BaseUrl)
+	// log.Println("Jsimports:", config.Jsimports[0].Name)
+	// log.Println("Jsimports:", config.Jsimports[0].Path)
+}
 
 var tmpl *template.Template
 
 func main() {
+	// getting and parsing template files
 	templateFiles := utilities.GetTemplates()
 	tmpl, _ = template.ParseFiles(templateFiles...)
+
+	// loading config
+	loadConfig()
+
 	router := httprouter.New()
 	router.GET("/", Home)
 	router.GET("/blog-home", BlogHome)

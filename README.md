@@ -11,3 +11,8 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 - built in go templates for rendering nested html templates
 - serve static files from `public` folder 
 - minify css `brew install tdewolff/tap/minify`
+
+## upcoming features
+- websocket-based page reload
+- better css tooling
+- session handling, start with cookies
