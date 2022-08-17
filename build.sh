@@ -6,7 +6,7 @@
 # minify public/public.css -o public/public.min.css;
 
 echo 'copying javascript files to public folder...';
-cp ./assets/node_modules/flatpickr/dist/flatpickr.min.css ./public/js;
+cp ./assets/node_modules/flatpickr/dist/flatpickr.min.js ./public/js;
 
 echo 'minifying style css...';
 minify assets/style.css -o public/style.min.css;

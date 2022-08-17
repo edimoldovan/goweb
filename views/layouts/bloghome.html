@@ -3,12 +3,18 @@
 <html lang="en">
 {{template "bloghead" .}}
 <body>
+  {{template "importmaps" .}}
   <main class="flow">
     {{template "blogheader" .}}
     {{template "blogmain" .}}
     {{template "blogpostlist" .}}
     {{template "blogfooter" .}}
   </div>
+  <script type="module">
+    import * as flatpickr from "flatpickr";
+    // Write main module code here, or as a separate file with a "src" attribute on the module script.
+    console.log(flatpickr);
+  </script>
 </body>
 </html>
 {{end}}

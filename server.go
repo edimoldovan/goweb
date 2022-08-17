@@ -28,8 +28,7 @@ type tomlConfig struct {
 	PostGresConnectURL string      `toml:"postgres_connect_url"`
 	BaseUrl            string      `toml:"base_url"`
 	BaseDomain         string      `toml:"base_domain"`
-	PublicImportmaps   []importmap `toml:"public_importmaps"`
-	PrivateImportmaps  []importmap `toml:"private_importmaps"`
+	Importmaps         []importmap `toml:"importmaps"`
 }
 
 var (
@@ -71,7 +70,8 @@ func main() {
 
 func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
-		"Title": "Web app with Go std",
+		"Title":      "Web app with Go std",
+		"Importmaps": config.Importmaps,
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -81,7 +81,8 @@ func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
-		"Title": "Blog -- Home",
+		"Title":      "Blog -- Home",
+		"Importmaps": config.Importmaps,
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -92,7 +93,8 @@ func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
 	if err := tmpl.ExecuteTemplate(w, "blogpost", map[string]interface{}{
-		"Title": "Blog -- Post Title",
+		"Title":      "Blog -- Post Title",
+		"Importmaps": config.Importmaps,
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -102,7 +104,8 @@ func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	if err := tmpl.ExecuteTemplate(w, "blogposts", map[string]interface{}{
-		"Title": "Blog -- Post Lists",
+		"Title":      "Blog -- Post Lists",
+		"Importmaps": config.Importmaps,
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
