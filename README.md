@@ -1,5 +1,5 @@
 # gweb
-A simple web framework mostly based on go standard library, server side includes and javascript import maps
+A simple and opinionated web framework mostly based on the go standard library, server side includes and javascript import maps
 
 ## usage
 Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml`. This will build the executable into `tmp/` then run it. Details of what is run is in the `build.sh` file.
@@ -17,6 +17,7 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 - automatic page reload
 - better css tooling
 - session handling, start with cookies
+- server side inclundes
 
 ## experiment watch with `run-dev.sh`
 ```
