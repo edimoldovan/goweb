@@ -1,0 +1,32 @@
+{% set assetHash = global.random() %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% include "partials/meta-info.njk" %}
+    
+    <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
+    <link rel="icon" href="/images/favicon.svg" />
+
+    {# Add facility for pages to declare an array of stylesheet paths #}
+    {% if pageStylesheets %}
+      {% for item in pageStylesheets %}
+        <link rel="stylesheet" media="print" href="{{ item }}?{{ assetHash }}" onload="this.media='all'" />
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    <footer class="site-foot" role="contentinfo">
+      <div class="wrapper">
+        <div class="site-foot__inner">
+          {% include "icons/set.svg" %}
+          <p>By <a href="https://piccalil.li">Andy Bell</a> for <a href="https://set.studio">Set Studio</a>, published in 2022</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

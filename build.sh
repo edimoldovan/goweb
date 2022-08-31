@@ -6,7 +6,13 @@
 # minify public/public.css -o public/public.min.css;
 
 echo 'copying javascript files to public folder...';
-cp ./assets/node_modules/flatpickr/dist/flatpickr.min.js ./public/js;
+cp assets/node_modules/flatpickr/dist/flatpickr.min.js public/js;
+
+echo 'building global css with postcss...'
+cd assets/css-toolchain/; npx postcss src/css/global.css -o dist/css/global.css; cd ..; cd ..;
+
+echo 'minifying global css...';
+minify assets/css-toolchain/dist/css/global.css -o public/global.min.css;
 
 echo 'minifying style css...';
 minify assets/style.css -o public/style.min.css;

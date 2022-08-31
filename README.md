@@ -1,4 +1,4 @@
-# gweb
+# go-web
 A simple and opinionated web framework mostly based on the go standard library, server side includes and javascript import maps
 
 ## usage

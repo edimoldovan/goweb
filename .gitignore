@@ -16,3 +16,4 @@
 tmp
 .DS_Store
 assets/node_modules
+assets/css-toolchain/node_modules
