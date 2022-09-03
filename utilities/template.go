@@ -16,6 +16,7 @@ func GetTemplates() []string {
 		"./views/partials/prose.html",
 		"./views/partials/tools.html",
 		"./views/partials/importmaps.html",
+		"./views/partials/wsreload.html",
 
 		"./views/partials/bloghead.html",
 		"./views/partials/blogheader.html",

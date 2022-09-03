@@ -1,0 +1,38 @@
+{{define "wsreload"}}
+{{if .Development}}
+<script>
+  var ws;
+  var reconnected = false
+  function connect() {
+    ws = new WebSocket("ws://localhost:8000/live");
+    ws.onopen = () => {
+      ws.send("init");
+    };
+
+    ws.onmessage = (e) => {
+      if (e.data == "reload") {
+        if (reconnected) {
+          console.log("Reloading...")
+          window.location.reload()
+        }
+      }
+    };
+
+    ws.onclose = (e) => {
+      console.log('Socket is closed. Reconnect will be attempted in 0.5 seconds.');
+      setTimeout(() => {
+        connect()
+        reconnected = true
+      }, 500);
+    };
+
+    ws.onerror = (err) => {
+      console.error('Socket encountered error: ', err.message, 'Closing socket');
+      ws.close();
+    };
+  }
+
+  connect();
+</script>
+{{end}}
+{{end}}

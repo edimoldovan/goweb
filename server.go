@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/BurntSushi/toml"
+	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -52,22 +53,51 @@ func loadConfig() {
 }
 
 var tmpl *template.Template
+var upgrader = websocket.Upgrader{} // use default options
 
 func main() {
-	// getting and parsing template files
+	// read template files
 	templateFiles := utilities.GetTemplates()
+	// parse template files
 	tmpl, _ = template.ParseFiles(templateFiles...)
 
-	// loading config
+	// config
 	loadConfig()
 
+	// route and routes
 	router := httprouter.New()
 	router.GET("/", Home)
 	router.GET("/blog-home", BlogHome)
 	router.GET("/posts/:link", BlogPost)
 	router.GET("/posts", BlogPosts)
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
+	if os.Getenv("G_WEB_ENV") == "development" {
+		router.GET("/live", live)
+	}
 	log.Fatal(http.ListenAndServe(":8000", router))
+}
+
+func live(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	c, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Print("upgrade:", err)
+		return
+	}
+	defer c.Close()
+
+	for {
+		mt, msg, err := c.ReadMessage()
+		if err != nil {
+			log.Println("read:", err)
+			break
+		}
+		log.Printf("received: %s", msg)
+		err = c.WriteMessage(mt, []byte("reload"))
+		if err != nil {
+			log.Println("write:", err)
+			break
+		}
+	}
 }
 
 func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
