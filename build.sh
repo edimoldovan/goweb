@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# echo 'building public sass/scss...';
-# sass static/scss/public.scss public/public.css;
-# echo 'minifying public css...';
-# minify public/public.css -o public/public.min.css;
-
 echo 'copying javascript files to public folder...';
 cp assets/node_modules/flatpickr/dist/flatpickr.min.js public/js;
 
