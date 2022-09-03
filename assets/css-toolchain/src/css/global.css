@@ -3,13 +3,31 @@
 @import 'global/reset.css';
 @import 'global/fonts.css';
 
-@import 'tailwindcss/components';
+/* @import 'tailwindcss/components'; */
+@import './tailwind-components.css';
 
 @import 'global/variables.css';
 @import 'global/global-styles.css';
 
-@import-glob 'blocks/*.css';
-@import-glob 'compositions/*.css';
-@import-glob 'utilities/*.css';
+@import 'blocks/button.css';
+@import 'blocks/card.css';
+@import 'blocks/curve.css';
+@import 'blocks/features.css';
+@import 'blocks/prose.css';
+@import 'blocks/section.css';
+@import 'blocks/signoff.css';
+@import 'blocks/site-foot.css';
 
-@import 'tailwindcss/utilities';
+@import 'compositions/grid.css';
+@import 'compositions/sidebar.css';
+
+@import 'global/fonts.css';
+@import 'global/global-styles.css';
+
+@import 'utilities/flow.css';
+@import 'utilities/region.css';
+@import 'utilities/wrapper.css';
+
+/* @import 'tailwindcss/utilities'; */
+@import './tailwind-utilities.css';
+

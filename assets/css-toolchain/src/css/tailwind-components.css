@@ -1,0 +1,32 @@
+:root {
+  --color-dark: #404040;
+  --color-light: #f3f3f3;
+  --color-light-glare: #fff;
+  --color-primary: #0042bf;
+  --color-primary-glare: #d8e2f4;
+  --color-secondary: #ee5141;
+  --color-secondary-glare: #ffe3e5;
+  --space-xs: clamp(0.75rem, 0.69rem + 0.29vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.92rem + 0.39vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.38rem + 0.58vw, 1.875rem);
+  --space-l: clamp(2rem, 1.84rem + 0.78vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.77rem + 1.17vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.69rem + 1.55vw, 5rem);
+  --space-3xl: clamp(6rem, 5.53rem + 2.33vw, 7.5rem);
+  --space-xs-s: clamp(0.75rem, 0.59rem + 0.78vw, 1.25rem);
+  --space-s-m: clamp(1rem, 0.73rem + 1.36vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.19rem + 1.55vw, 2.5rem);
+  --space-l-xl: clamp(2rem, 1.46rem + 2.72vw, 3.75rem);
+  --space-l-2xl: clamp(2rem, 1.07rem + 4.66vw, 5rem);
+  --space-xl-2xl: clamp(3rem, 2.38rem + 3.11vw, 5rem);
+  --space-2xl-3xl: clamp(4rem, 2.91rem + 5.44vw, 7.5rem);
+  --size-step-0: clamp(1rem, 0.92rem + 0.39vw, 1.25rem);
+  --size-step-1: clamp(1.1875rem, 1.01rem + 0.87vw, 1.75rem);
+  --size-step-2: clamp(1.4375rem, 1.11rem + 1.65vw, 2.5rem);
+  --size-step-3: clamp(1.75rem, 1.19rem + 2.82vw, 3.5625rem);
+  --size-step-4: clamp(2.0625rem, 1.15rem + 4.56vw, 5rem);
+  --size-step-5: clamp(2.5rem, 1.08rem + 7.09vw, 7.0625rem);
+  --size-step-6: clamp(3rem, 0.84rem + 10.78vw, 9.9375rem);
+  --font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  --font-serif: Georgia, sans-serif;
+}

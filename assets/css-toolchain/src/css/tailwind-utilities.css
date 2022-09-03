@@ -1,0 +1,29 @@
+.mt-l-xl {
+  margin-top: clamp(2rem, 1.46rem + 2.72vw, 3.75rem);
+}
+.block {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+.grid {
+  display: grid;
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
+}
+.flow-space-s-m {
+  --flow-space: clamp(1rem, 0.73rem + 1.36vw, 1.875rem);
+}
+.flow-space-2xl-3xl {
+  --flow-space: clamp(4rem, 2.91rem + 5.44vw, 7.5rem);
+}
+.spot-color-primary {
+  --spot-color: #0042bf;
+}
+.spot-color-secondary {
+  --spot-color: #ee5141;
+}
