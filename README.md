@@ -18,4 +18,6 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 ## upcoming features
 
 - session handling, start with cookies
+- JSON API
+- JWT
 - server side inclundes
