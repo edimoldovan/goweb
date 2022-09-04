@@ -7,9 +7,12 @@ import (
 	"main/utilities"
 	"net/http"
 	"os"
+	"strings"
 	"text/template"
+	"time"
 
 	"github.com/BurntSushi/toml"
+	"github.com/golang-jwt/jwt"
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
 )
@@ -20,6 +23,15 @@ type Post struct {
 	Url       string `json:"url"`
 	Image     string `json:"image"`
 	Lead      string `json:"lead"`
+}
+
+type JWTToken struct {
+	Token string `json:"token"`
+}
+
+type User struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type importmap struct {
@@ -37,6 +49,8 @@ type tomlConfig struct {
 var (
 	config tomlConfig
 )
+
+var hmacSampleSecret = []byte("someSecret") // TODO: put this key in safe place and use proper key
 
 func loadConfig() {
 	f := "./config.toml"
@@ -73,6 +87,7 @@ func main() {
 	// JSON routes
 	router.GET("/api/posts", APIBlogPosts)
 	router.POST("/api/posts", APICreateBlogPost)
+	router.POST("/api/tokens", APICreateToken)
 
 	// static routes
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
@@ -170,12 +185,51 @@ func APIBlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 }
 
 func APICreateBlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	tokenString := strings.Split(r.Header.Get("Authorization"), " ")
+
+	token, tokenErr := jwt.Parse(tokenString[1], func(token *jwt.Token) (interface{}, error) {
+		// Don't forget to validate the alg is what you expect:
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+
+		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
+		return hmacSampleSecret, nil
+	})
+
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		fmt.Println(claims["foo"], claims["nbf"])
+	} else {
+		fmt.Println(tokenErr)
+	}
+
 	var post Post
-	err := json.NewDecoder(r.Body).Decode(&post)
-	if err != nil {
-		http.Error(w, err.Error(), 400)
+	jsonErr := json.NewDecoder(r.Body).Decode(&post)
+	if jsonErr != nil {
+		http.Error(w, jsonErr.Error(), 400)
 		return
 	}
 	log.Println(post)
 	json.NewEncoder(w).Encode(post)
+}
+
+func APICreateToken(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	var user User
+	var token JWTToken
+	err := json.NewDecoder(r.Body).Decode(&user)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	if user.Email == "email" && user.Password == "password" {
+		generatedToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"foo": "bar",
+			"nbf": time.Date(2022, 01, 01, 0, 0, 0, 0, time.UTC).Unix(),
+			"exp": time.Now().Add(time.Minute * 30).Unix(),
+		})
+		token.Token, err = generatedToken.SignedString(hmacSampleSecret)
+	} else {
+		token.Token = "wrong login credentials"
+	}
+	json.NewEncoder(w).Encode(token)
 }
