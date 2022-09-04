@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt"
-	"github.com/julienschmidt/httprouter"
 )
 
 var Tmpl *template.Template
@@ -35,7 +34,10 @@ type User struct {
 	Password string `json:"password"`
 }
 
-func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func Home(w http.ResponseWriter, r *http.Request) {
+	// getting params from the context
+	// ps := r.Context().Value("params").(httprouter.Params)
+
 	if err := Tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
 		"Title":       "Web app with Go std",
 		"Importmaps":  config.Config.Importmaps,
@@ -47,7 +49,7 @@ func Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 }
 
-func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func BlogHome(w http.ResponseWriter, r *http.Request) {
 	if err := Tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
 		"Title":       "Blog -- Home",
 		"Importmaps":  config.Config.Importmaps,
@@ -59,7 +61,7 @@ func BlogHome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 }
 
-func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func BlogPost(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
 	if err := Tmpl.ExecuteTemplate(w, "blogpost", map[string]interface{}{
 		"Title":       "Blog -- Post Title",
@@ -72,7 +74,7 @@ func BlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	}
 }
 
-func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func BlogPosts(w http.ResponseWriter, r *http.Request) {
 	if err := Tmpl.ExecuteTemplate(w, "blogposts", map[string]interface{}{
 		"Title":       "Blog -- Post Lists",
 		"Importmaps":  config.Config.Importmaps,
@@ -84,7 +86,7 @@ func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	}
 }
 
-func APIBlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func APIBlogPosts(w http.ResponseWriter, r *http.Request) {
 	posts := []Post{
 		{
 			Published: "some date",
@@ -95,7 +97,7 @@ func APIBlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 	json.NewEncoder(w).Encode(posts)
 }
 
-func APICreateBlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func APICreateBlogPost(w http.ResponseWriter, r *http.Request) {
 	tokenString := strings.Split(r.Header.Get("Authorization"), " ")
 
 	token, tokenErr := jwt.Parse(tokenString[1], func(token *jwt.Token) (interface{}, error) {
@@ -124,7 +126,7 @@ func APICreateBlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Par
 	json.NewEncoder(w).Encode(post)
 }
 
-func APICreateToken(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func APICreateToken(w http.ResponseWriter, r *http.Request) {
 	var user User
 	var token JWTToken
 	err := json.NewDecoder(r.Body).Decode(&user)

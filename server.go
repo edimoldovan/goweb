@@ -4,6 +4,7 @@ import (
 	"log"
 	"main/config"
 	"main/handlers"
+	"main/middlewares"
 	"main/utilities"
 	"net/http"
 	"os"
@@ -11,6 +12,7 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
+	"github.com/justinas/alice"
 )
 
 // var templateFiles []string
@@ -30,16 +32,19 @@ func main() {
 	// router
 	router := httprouter.New()
 
+	// middlewares
+	chain := alice.New(middlewares.Logger)
+
 	// HTML routes
-	router.GET("/", handlers.Home)
-	router.GET("/blog-home", handlers.BlogHome)
-	router.GET("/posts/:link", handlers.BlogPost)
-	router.GET("/posts", handlers.BlogPosts)
+	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
+	router.GET("/blog-home", middlewares.Wrapper(chain.ThenFunc(handlers.BlogHome)))
+	router.GET("/posts/:link", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPost)))
+	router.GET("/posts", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPosts)))
 
 	// JSON routes
-	router.GET("/api/posts", handlers.APIBlogPosts)
-	router.POST("/api/posts", handlers.APICreateBlogPost)
-	router.POST("/api/tokens", handlers.APICreateToken)
+	router.GET("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APIBlogPosts)))
+	router.POST("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateBlogPost)))
+	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
 	// static routes
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
