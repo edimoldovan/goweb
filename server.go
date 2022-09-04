@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"main/utilities"
@@ -14,11 +15,11 @@ import (
 )
 
 type Post struct {
-	Published string
-	Title     string
-	Url       string
-	Image     string
-	Lead      string
+	Published string `json:"published"`
+	Title     string `json:"title"`
+	Url       string `json:"url"`
+	Image     string `json:"image"`
+	Lead      string `json:"lead"`
 }
 
 type importmap struct {
@@ -46,10 +47,6 @@ func loadConfig() {
 
 	// examples of config use
 	// log.Println("PostGres URL:", config.PostGresConnectURL)
-
-	// log.Println("Base URL:", config.BaseUrl)
-	// log.Println("Jsimports:", config.Jsimports[0].Name)
-	// log.Println("Jsimports:", config.Jsimports[0].Path)
 }
 
 var tmpl *template.Template
@@ -64,16 +61,25 @@ func main() {
 	// config
 	loadConfig()
 
-	// route and routes
+	// router
 	router := httprouter.New()
+
+	// HTML routes
 	router.GET("/", Home)
 	router.GET("/blog-home", BlogHome)
 	router.GET("/posts/:link", BlogPost)
 	router.GET("/posts", BlogPosts)
+
+	// JSON routes
+	router.GET("/api/posts", APIBlogPosts)
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
+
+	// DEVELOPMENT only routes
 	if os.Getenv("G_WEB_ENV") == "development" {
 		router.GET("/live", live)
 	}
+
+	// HTTP server
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
@@ -147,4 +153,15 @@ func BlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+}
+
+func APIBlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	posts := []Post{
+		{
+			Published: "some date",
+			Title:     "some title",
+			Url:       "http://some.url",
+		},
+	}
+	json.NewEncoder(w).Encode(posts)
 }
