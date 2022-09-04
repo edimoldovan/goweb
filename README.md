@@ -14,10 +14,11 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 - parse and use `config.toml`
 - use javascript import maps installed with `npm` and configured in `config.toml`
 - automatic page reload with a simple socket signalling enabled by [gorilla/websocket](https://github.com/gorilla/websocket)
+- JSON API exammples
 
 ## upcoming features
 
 - session handling, start with cookies
-- JSON API
+
 - JWT
 - server side inclundes

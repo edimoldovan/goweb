@@ -72,6 +72,9 @@ func main() {
 
 	// JSON routes
 	router.GET("/api/posts", APIBlogPosts)
+	router.POST("/api/posts", APICreateBlogPost)
+
+	// static routes
 	router.ServeFiles("/static/*filepath", http.Dir("./public"))
 
 	// DEVELOPMENT only routes
@@ -164,4 +167,15 @@ func APIBlogPosts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 		},
 	}
 	json.NewEncoder(w).Encode(posts)
+}
+
+func APICreateBlogPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	var post Post
+	err := json.NewDecoder(r.Body).Decode(&post)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	log.Println(post)
+	json.NewEncoder(w).Encode(post)
 }
