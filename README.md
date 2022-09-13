@@ -25,3 +25,4 @@ Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml
 
 - session handling, start with cookies
 - server side inclundes
+- database example, Posgres with [pgx](https://github.com/jackc/pgx)
