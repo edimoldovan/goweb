@@ -1,7 +1,7 @@
 module main
 
-// +heroku goVersion go1.18
-go 1.18
+// +heroku goVersion go1.19
+go 1.19
 
 require (
 	github.com/BurntSushi/toml v1.2.0
