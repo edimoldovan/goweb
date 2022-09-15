@@ -5,26 +5,26 @@ func GetTemplates() []string {
 	// for now we declare them here upfront
 	var templateFiles = []string{
 		// layluts
-		"./views/layouts/home.html",
-		"./views/layouts/bloghome.html",
-		"./views/layouts/blogpost.html",
-		"./views/layouts/blogposts.html",
+		"./templates/layouts/home.html",
+		"./templates/layouts/bloghome.html",
+		"./templates/layouts/blogpost.html",
+		"./templates/layouts/blogposts.html",
 		// partials
-		"./views/partials/head.html",
-		"./views/partials/header.html",
-		"./views/partials/products.html",
-		"./views/partials/prose.html",
-		"./views/partials/tools.html",
-		"./views/partials/importmaps.html",
-		"./views/partials/wsreload.html",
+		"./templates/partials/head.html",
+		"./templates/partials/header.html",
+		"./templates/partials/products.html",
+		"./templates/partials/prose.html",
+		"./templates/partials/tools.html",
+		"./templates/partials/importmaps.html",
+		"./templates/partials/wsreload.html",
 
-		"./views/partials/bloghead.html",
-		"./views/partials/blogheader.html",
-		"./views/partials/blogmain.html",
-		"./views/partials/blogpostlist.html",
-		"./views/partials/blogfooter.html",
-		"./views/partials/blogpostpartial.html",
-		"./views/partials/blogpostsheader.html",
+		"./templates/partials/bloghead.html",
+		"./templates/partials/blogheader.html",
+		"./templates/partials/blogmain.html",
+		"./templates/partials/blogpostlist.html",
+		"./templates/partials/blogfooter.html",
+		"./templates/partials/blogpostpartial.html",
+		"./templates/partials/blogpostsheader.html",
 	}
 	return templateFiles
 }
