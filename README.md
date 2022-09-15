@@ -8,18 +8,43 @@ A simple and opinionated web framework mostly based on the go standard library, 
 Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml`. This will build the executable into `tmp/` then run it. Details of what is run is in the `build.sh` file.
 
 ## features
-- watch and restart the server with `air` configured in `.air.toml`
-- simple [router](https://github.com/julienschmidt/httprouter) for convenince and developer experience 
-- built in go templates for rendering nested html templates
-- serve static files from `public` folder 
-- better css tooling enabled by a full project including design tokens in `assets/css-toolchain`
-- build and minify CSS with [parcel-css](https://github.com/parcel-bundler/parcel-css)
-- parse and use `config.toml`
-- use javascript import maps installed with `npm` and configured in `config.toml`
+
+### developer tooling
+- preconfigured `.air.toml` to be able to use it out of the box. Documentation on options available in the [air](https://github.com/cosmtrek/air) repository. Just run `air server.go .air.toml` to start the server app.
 - automatic page reload with a simple socket signalling enabled by [gorilla/websocket](https://github.com/gorilla/websocket)
-- JSON API exammples
-- JWT examples, both issuing a new token at login and reading it
-- middlewares, starting with a request logger
+
+### simple router
+Even though Go STD provides this functionality out of the box, the [router](https://github.com/julienschmidt/httprouter) ads a few features for convenince and developer experience
+Examples for how to handle a few kinds of routes
+- html output
+- JSON API output
+- JWT examples, both issuing a new token at login and reading its claims from the request
+
+### built in go templates for rendering nested html templates
+Go provides the ´html/template´ package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet.
+
+### easily serve static files (css/js/images/etc)
+App is easily serving static files from `public` folder like this: `/public/some.file` available on `/static/some.file` url.
+
+### better css tooling
+Basic design system included based on [CubeCSS](https://cube.fyi/). Key principles:
+- use progressive enhancement
+- structure the CSS in these four groups: composition styles, utilities, blocks and exceptions
+The most import part is that we should try to guide the browser to do what it does best (rendering) in a context that it finds itself in.
+Design system is composed of a few files: defined colors, spacing values and text sizes, along with a global reset and global styling to bring all browsers on the same page. These are used to build the actual, fluid, styling of the pages.
+
+### package and minify CSS
+This done with [parcel-css](https://github.com/parcel-bundler/parcel-css) as there was no Go-based tool that was able to do it (TODO: find one)
+
+### example configuration use 
+Parse and use `config.toml` to showcase some examples of how this is done.
+
+### use javascript import maps 
+JavaScript dependencies are installed with `npm` into the `assets/` folder, then minified/copied if needed into the `public` folder when the server starts. They are configured in the `config.toml` so that they become available as JavaScript import maps in the HTML head.
+Where needed, [ES Module Shims](https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js) is helping fill in the functionalöity in unsupportive browsers.
+
+### middleware
+Example of middleware implementations, starting with a request logger
 
 ## upcoming features
 
