@@ -3,12 +3,12 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"log"
 	"main/config"
 	"net/http"
 	"os"
 	"strings"
-	"text/template"
 	"time"
 
 	"github.com/golang-jwt/jwt"

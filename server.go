@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"main/config"
 	"main/handlers"
@@ -8,7 +9,6 @@ import (
 	"main/utilities"
 	"net/http"
 	"os"
-	"text/template"
 
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
