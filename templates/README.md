@@ -1,1 +1,1 @@
-## pages > layouts > partials
+## layouts > partials
