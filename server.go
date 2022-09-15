@@ -47,7 +47,17 @@ func main() {
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
 	// static routes
-	router.ServeFiles("/static/*filepath", http.Dir("./public"))
+	if os.Getenv("G_WEB_ENV") == "development" {
+		router.ServeFiles("/static/*filepath", http.Dir("./public"))
+	} else {
+		fileServer := http.FileServer(http.Dir("public"))
+		router.GET("/static/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+			w.Header().Set("Vary", "Accept-Encoding")
+			w.Header().Set("Cache-Control", "public, max-age=7776000")
+			r.URL.Path = p.ByName("filepath")
+			fileServer.ServeHTTP(w, r)
+		})
+	}
 
 	// DEVELOPMENT only routes
 	if os.Getenv("G_WEB_ENV") == "development" {
