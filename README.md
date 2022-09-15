@@ -23,7 +23,7 @@ Go provides the ´html/template´ package to handle html templating. The `templa
 ## easily serve static files (css/js/images/etc)
 App is easily serving static files from `public` folder like this: `/public/some.file` available on `/static/some.file` url.
 
-## better css tooling
+## better css
 Basic design system included based on [CubeCSS](https://cube.fyi/). Key principles:
 - use progressive enhancement
 - structure the CSS in these four groups: composition styles, utilities, blocks and exceptions
