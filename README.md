@@ -31,7 +31,7 @@ The most import part is that we should try to guide the browser to do what it do
 Design system is composed of a few files: defined colors, spacing values and text sizes, along with a global reset and global styling to bring all browsers on the same page. These are used to build the actual, fluid, styling of the pages.
 
 ## package and minify CSS
-This done with [parcel-css](https://github.com/parcel-bundler/parcel-css) as there was no Go-based tool that was able to do it (TODO: find one)
+This done with `lightningcss` which can be installed like this `npm i -g lightningcss-cli` or any other way that makes the cli tool available to `npx`
 
 ## example configuration use 
 Parse and use `config.toml` to showcase some examples of how this is done.
