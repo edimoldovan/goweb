@@ -1,0 +1,94 @@
+{{define "designsystem"}}
+  
+  <div class="region flow section">
+    <header class="scheme">
+      <h3>Scheme</h3>
+      <form id="theme-switcher">
+        <div>
+          <input type="radio" id="light" name="theme" value="light">
+          <label for="light">Light</label>
+        </div>
+        <div>
+          <input type="radio" id="dark" name="theme" value="dark">
+          <label for="dark">Dark</label>
+        </div>
+      </form>
+    </header>
+  </div>
+
+  <div class="section">
+    <div class="wrapper flow">
+      <h3>Colors</h3>
+      <section class="colors">
+        <div class="brand box-shadow">Brand color</div>
+        <div class="surface1 box-shadow">1</div>
+        <div class="surface2 box-shadow">2</div>
+        <div class="surface3 box-shadow">3</div>
+        <div class="surface4 box-shadow">4</div>
+      </section>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrapper">
+    
+      <p class="text-step-8">
+        <strong>Step 8</strong>
+        <output class="u-style-label">319.61px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 226.04px;">
+        <strong>Step 7</strong>
+        <output class="u-style-label">226.04px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 159.86px;">
+        <strong>Step 6</strong>
+        <output class="u-style-label">159.86px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 113.05px;">
+        <strong>Step 5</strong>
+        <output class="u-style-label">113.05px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 79.95px;">
+        <strong>Step 4</strong>
+        <output class="u-style-label">79.95px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 56.54px;">
+        <strong>Step 3</strong>
+        <output class="u-style-label">56.54px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 39.99px;">
+        <strong>Step 2</strong>
+        <output class="u-style-label">39.99px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 28.28px;">
+        <strong>Step 1</strong>
+        <output class="u-style-label">28.28px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 20px;">
+        <strong>Step 0</strong>
+        <output class="u-style-label">20.00px</output>
+      </p>
+
+      <p class="visualisation" style="font-size: 14.14px;">
+        <strong>Step -1</strong>
+        <output class="u-style-label">14.14px</output>
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    const e = document.querySelector("#theme-switcher"), t = document.firstElementChild;
+
+    e.addEventListener("input", (e => o(e.target.value)));
+    const o = e => t.setAttribute("color-scheme", e);
+  </script>
+{{end}}

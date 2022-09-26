@@ -1,10 +1,11 @@
 {{define "home"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" color-scheme="auto">
 {{template "head" .}}
 <body>
   {{template "importmaps" .}}
   <main class="flow">
+    {{template "designsystem" .}}
     {{template "header" .}}
     {{template "products" .}}
     {{template "prose" .}}

@@ -4,11 +4,18 @@
   Low-specificity, global styles that apply to the whole 
   project: https://cube.fyi/css.html
 */
+
+html{
+  block-size: 100%;
+  background-color: var(--color1);
+  color: var(--text1);
+}
+
 body {
-  color: var(--color-dark);
-  background: var(--color-light);
   font-size: var(--step-1);
   font-family: var(--font-base);
+  /* or set to system defaults */
+  /* font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; */
   line-height: 1.4;
   letter-spacing: var(--tracking);
 }
@@ -96,4 +103,16 @@ main:focus {
 ::selection {
   background: var(--color-dark);
   color: var(--color-light);
+}
+
+form {
+  display: flex;
+  align-items: center;
+  column-gap: 2ch;
+}
+
+form > div {
+  display: inline-flex;
+  align-items: center;
+  gap: .75ch;
 }

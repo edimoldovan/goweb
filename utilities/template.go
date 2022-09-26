@@ -10,6 +10,7 @@ func GetTemplates() []string {
 		"./templates/layouts/blogpost.html",
 		"./templates/layouts/blogposts.html",
 		// partials
+		"./templates/partials/designsystem.html",
 		"./templates/partials/head.html",
 		"./templates/partials/header.html",
 		"./templates/partials/products.html",

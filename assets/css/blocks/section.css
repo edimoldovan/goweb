@@ -1,3 +1,7 @@
+.section {
+  width: 100%;
+}
+
 .section > .curve {
   transform: translateY(-1px);
 }
