@@ -53,8 +53,6 @@
 .colors > * {
   --size: 10ch;
   height: var(--size, 8ch);
-  /* no clue why this doesn't work */
-  /* aspect-ratio: --ratio-square; */
   aspect-ratio: var(--ratio-square, 1);
   display: grid;
   align-content: center;
