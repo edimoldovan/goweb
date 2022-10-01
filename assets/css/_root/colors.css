@@ -8,9 +8,9 @@
   --color-secondary: #ee5141;
   --color-secondary-glare: #ffe3e5;
 
-  --brand-hue:200;
-  --brand-saturation:100%;
-  --brand-lightness:50%;
+  --brand-hue: 200;
+  --brand-saturation: 100%;
+  --brand-lightness: 50%;
 
   --brand-light:hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
   --text1-light:hsl(var(--brand-hue) var(--brand-saturation) 10%);
@@ -86,4 +86,3 @@
   --color-shadow: var(--color-shadow-dark);
   --shadow-strength: var(--shadow-strength-dark);
 }
-
