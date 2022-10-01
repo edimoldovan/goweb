@@ -29,11 +29,11 @@
 }
 
 .spot-color-primary {
-  --spot-color: #0042bf;
+  --spot-color: var(--brand-primary1);
 }
 
 .spot-color-secondary {
-  --spot-color: #ee5141;
+  --spot-color: var(--brand-primary3);
 }
 
 .summary {
@@ -51,7 +51,7 @@
 }
 
 .colors > * {
-  --size: 10ch;
+  --size: 7ch;
   height: var(--size, 8ch);
   aspect-ratio: var(--ratio-square, 1);
   display: grid;
@@ -70,29 +70,59 @@
   position: relative;
 }
 
-.brand{
-  color: var(--text1);
-  background-color: var(--brand)
+.brand-primary1 {
+  color: var(--color8);
+  background-color: var(--brand-primary1)
+}
+
+.brand-primary2 {
+  color: var(--color8);
+  background-color: var(--brand-primary2)
+}
+
+.brand-primary3 {
+  color: var(--color8);
+  background-color: var(--brand-primary3)
 }
 
 .surface1 {
   background-color: var(--color1);
-  color: var(--text2);
+  color: var(--color8);
 }
 
 .surface2 {
   background-color: var(--color2);
-  color: var(--text2);
+  color: var(--color7);
 }
 
 .surface3 {
   background-color: var(--color3);
-  color: var(--text1);
+  color: var(--color6);
 }
 
 .surface4 {
   background-color: var(--color4);
-  color: var(--text1);
+  color: var(--color5);
+}
+
+.surface5 {
+  background-color: var(--color5);
+  color: var(--color4);
+}
+
+.surface6 {
+  background-color: var(--color6);
+  color: var(--color3);
+}
+
+.surface7 {
+  background-color: var(--color7);
+  color: var(--color2);
+}
+
+.surface8 {
+  background-color: var(--color8);
+  color: var(--color1);
 }
 
 .box-shadow{

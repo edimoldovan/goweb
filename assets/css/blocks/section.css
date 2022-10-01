@@ -12,7 +12,7 @@
 
 .section__inner {
   background: var(--spot-color, var(--color-dark));
-  color: var(--color-light);
+  color: var(--color8);
 }
 
 .section blockquote {

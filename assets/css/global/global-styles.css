@@ -8,7 +8,7 @@
 html{
   block-size: 100%;
   background-color: var(--color1);
-  color: var(--text1);
+  color: var(--color8);
 }
 
 body {
@@ -101,8 +101,8 @@ main:focus {
 
 /* Base selection styles that invert whatever colours are rendered */
 ::selection {
-  background: var(--color-dark);
-  color: var(--color-light);
+  background: var(--color8);
+  color: var(--color3);
 }
 
 form {

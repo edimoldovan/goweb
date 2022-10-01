@@ -1,47 +1,65 @@
 * {
-
-  --color-dark: #404040;
-  --color-light: #f3f3f3;
-  --color-light-glare: #fff;
   --color-primary: #0042bf;
   --color-primary-glare: #d8e2f4;
   --color-secondary: #ee5141;
   --color-secondary-glare: #ffe3e5;
 
-  --brand-hue: 200;
-  --brand-saturation: 100%;
-  --brand-lightness: 50%;
+  --brand-primary1-hue: 219;
+  --brand-primary1-saturation: 100%;
+  --brand-primary1-lightness: 37%;
 
-  --brand-light:hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
-  --text1-light:hsl(var(--brand-hue) var(--brand-saturation) 10%);
-  --text2-light:hsl(var(--brand-hue) 30% 30%);
-  --color1-light:hsl(var(--brand-hue) 25% 90%);
-  --color2-light:hsl(var(--brand-hue) 20% 99%);
-  --color3-light:hsl(var(--brand-hue) 20% 92%);
-  --color4-light:hsl(var(--brand-hue) 20% 85%);
-  --color-shadow-light:var(--brand-hue) 10% 20%;
-  --shadow-strength-light:.02;
+  /* hsl(219deg 100% 37%) */
 
-  --brand-dark:hsl( var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5) );
-  --text1-dark:hsl(var(--brand-hue) 15% 85%);
-  --text2-dark:hsl(var(--brand-hue) 5% 65%);
-  --color1-dark:hsl(var(--brand-hue) 10% 10%);
-  --color2-dark:hsl(var(--brand-hue) 10% 15%);
-  --color3-dark:hsl(var(--brand-hue) 5% 20%);
-  --color4-dark:hsl(var(--brand-hue) 5% 25%);
-  --color-shadow-dark:var(--brand-hue) 50% 3%;
+  --brand-primary2-hue: 196;
+  --brand-primary2-saturation: 73%;
+  --brand-primary2-lightness: 62%;
+
+  --brand-primary3-hue: 10;
+  --brand-primary3-saturation: 100%;
+  --brand-primary3-lightness: 50%;
+
+  --brand-primary1-light:hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) var(--brand-primary1-lightness));
+  --brand-primary2-light:hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) var(--brand-primary2-lightness));
+  --brand-primary3-light:hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) var(--brand-primary3-lightness));
+  --color1-light:hsl(var(--brand-primary1-hue) 20% 95%);
+  --color2-light:hsl(var(--brand-primary1-hue) 20% 85%);
+  --color3-light:hsl(var(--brand-primary1-hue) 20% 80%);
+  --color4-light:hsl(var(--brand-primary1-hue) 20% 75%);
+  --color5-light:hsl(var(--brand-primary1-hue) 20% 65%);
+  --color6-light:hsl(var(--brand-primary1-hue) 20% 45%);
+  --color7-light:hsl(var(--brand-primary1-hue) 20% 30%);
+  --color8-light:hsl(var(--brand-primary1-hue) 20% 20%);
+  --color-shadow-light:var(--brand-primary1-hue) 10% 20%;
+  --shadow-strength-light: .02;
+
+  --brand-primary1-dark:hsl( var(--brand-primary1-hue) calc(var(--brand-primary1-saturation) / 1.1) calc(var(--brand-primary1-lightness) / 1.2) );
+  --brand-primary2-dark:hsl( var(--brand-primary2-hue) calc(var(--brand-primary2-saturation) / 1.1) calc(var(--brand-primary2-lightness) / 1.2) );
+  --brand-primary3-dark:hsl( var(--brand-primary3-hue) calc(var(--brand-primary3-saturation) / 1.1) calc(var(--brand-primary3-lightness) / 1.2) );
+  --color1-dark:hsl(var(--brand-primary1-hue) 10% 10%);
+  --color2-dark:hsl(var(--brand-primary1-hue) 10% 15%);
+  --color3-dark:hsl(var(--brand-primary1-hue) 10% 20%);
+  --color4-dark:hsl(var(--brand-primary1-hue) 10% 25%);
+  --color5-dark:hsl(var(--brand-primary1-hue) 10% 35%);
+  --color6-dark:hsl(var(--brand-primary1-hue) 10% 55%);
+  --color7-dark:hsl(var(--brand-primary1-hue) 10% 70%);
+  --color8-dark:hsl(var(--brand-primary1-hue) 10% 80%);
+  --color-shadow-dark:var(--brand-primary1-hue) 50% 3%;
   --shadow-strength-dark:.8;
 }
 
 :root{
   color-scheme: light;
-  --brand: var(--brand-light);
-  --text1: var(--text1-light);
-  --text2: var(--text2-light);
+  --brand-primary1: var(--brand-primary1-light);
+  --brand-primary2: var(--brand-primary2-light);
+  --brand-primary3: var(--brand-primary3-light);
   --color1: var(--color1-light);
   --color2: var(--color2-light);
   --color3: var(--color3-light);
   --color4: var(--color4-light);
+  --color5: var(--color5-light);
+  --color6: var(--color6-light);
+  --color7: var(--color7-light);
+  --color8: var(--color8-light);
   --color-shadow: var(--color-shadow-light);
   --shadow-strength: var(--shadow-strength-light);
 }
@@ -49,13 +67,17 @@
 @media (prefers-color-scheme:dark){
   :root{
       color-scheme: dark;
-      --brand: var(--brand-dark);
-      --text1: var(--text1-dark);
-      --text2: var(--text2-dark);
+      --brand-primary1: var(--brand-primary1-dark);
+      --brand-primary2: var(--brand-primary2-dark);
+      --brand-primary3: var(--brand-primary3-dark);
       --color1: var(--color1-dark);
       --color2: var(--color2-dark);
       --color3: var(--color3-dark);
       --color4: var(--color4-dark);
+      --color5: var(--color5-dark);
+      --color6: var(--color6-dark);
+      --color7: var(--color7-dark);
+      --color8: var(--color8-dark);
       --color-shadow: var(--color-shadow-dark);
       --shadow-strength: var(--shadow-strength-dark);
   }
@@ -63,26 +85,34 @@
 
 [color-scheme=light]{
   color-scheme: light;
-  --brand: var(--brand-light);
-  --text1: var(--text1-light);
-  --text2: var(--text2-light);
+  --brand-primary1: var(--brand-primary1-light);
+  --brand-primary2: var(--brand-primary2-light);
+  --brand-primary3: var(--brand-primary3-light);
   --color1: var(--color1-light);
   --color2: var(--color2-light);
   --color3: var(--color3-light);
   --color4: var(--color4-light);
+  --color5: var(--color5-light);
+  --color6: var(--color6-light);
+  --color7: var(--color7-light);
+  --color8: var(--color8-light);
   --color-shadow: var(--color-shadow-light);
   --shadow-strength: var(--shadow-strength-light);
 }
 
 [color-scheme=dark]{
   color-scheme: dark;
-  --brand: var(--brand-dark);
-  --text1: var(--text1-dark);
-  --text2: var(--text2-dark);
+  --brand-primary1: var(--brand-primary1-dark);
+  --brand-primary2: var(--brand-primary2-dark);
+  --brand-primary3: var(--brand-primary3-dark);
   --color1: var(--color1-dark);
   --color2: var(--color2-dark);
   --color3: var(--color3-dark);
   --color4: var(--color4-dark);
+  --color5: var(--color5-dark);
+  --color6: var(--color6-dark);
+  --color7: var(--color7-dark);
+  --color8: var(--color8-dark);
   --color-shadow: var(--color-shadow-dark);
   --shadow-strength: var(--shadow-strength-dark);
 }
