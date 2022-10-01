@@ -9,6 +9,7 @@
 @import 'global/fonts.css';
 @import 'global/variables.css';
 @import 'global/ratios.css';
+@import 'global/shadows.css';
 @import 'global/global-styles.css';
 
 @import 'blocks/button.css';
