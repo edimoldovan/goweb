@@ -28,4 +28,7 @@
 @import 'utilities/region.css';
 @import 'utilities/wrapper.css';
 
-@import 'exceptions/others.css'
+@import 'exceptions/others.css';
+
+/* only needed for design system */
+@import 'exceptions/designsystem.css';
