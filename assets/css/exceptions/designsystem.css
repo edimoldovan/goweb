@@ -40,6 +40,21 @@
   background-color: var(--brand-primary3)
 }
 
+.brand-secondary1 {
+  color: var(--color8);
+  background-color: var(--brand-secondary1)
+}
+
+.brand-secondary2 {
+  color: var(--color8);
+  background-color: var(--brand-secondary2)
+}
+
+.brand-secondary3 {
+  color: var(--color8);
+  background-color: var(--brand-secondary3)
+}
+
 .surface1 {
   background-color: var(--color1);
   color: var(--color8);
@@ -262,4 +277,102 @@
 
 .primary3-shade8 {
   background: var(--brand-primary3-shade8);
+}
+
+.secondary1-shade1 {
+  background: var(--brand-secondary1-shade1);
+}
+
+.secondary1-shade2 {
+  background: var(--brand-secondary1-shade2);
+}
+
+.secondary1-shade3 {
+  background: var(--brand-secondary1-shade3);
+}
+
+.secondary1-shade4 {
+  background: var(--brand-secondary1-shade4);
+}
+
+.secondary1-shade5 {
+  background: var(--brand-secondary1-shade5);
+}
+
+.secondary1-shade6 {
+  background: var(--brand-secondary1-shade6);
+}
+
+.secondary1-shade7 {
+  background: var(--brand-secondary1-shade7);
+}
+
+.secondary1-shade8 {
+  background: var(--brand-secondary1-shade8);
+}
+
+
+.secondary2-shade1 {
+  background: var(--brand-secondary2-shade1);
+}
+
+.secondary2-shade2 {
+  background: var(--brand-secondary2-shade2);
+}
+
+.secondary2-shade3 {
+  background: var(--brand-secondary2-shade3);
+}
+
+.secondary2-shade4 {
+  background: var(--brand-secondary2-shade4);
+}
+
+.secondary2-shade5 {
+  background: var(--brand-secondary2-shade5);
+}
+
+.secondary2-shade6 {
+  background: var(--brand-secondary2-shade6);
+}
+
+.secondary2-shade7 {
+  background: var(--brand-secondary2-shade7);
+}
+
+.secondary2-shade8 {
+  background: var(--brand-secondary2-shade8);
+}
+
+
+.secondary3-shade1 {
+  background: var(--brand-secondary3-shade1);
+}
+
+.secondary3-shade2 {
+  background: var(--brand-secondary3-shade2);
+}
+
+.secondary3-shade3 {
+  background: var(--brand-secondary3-shade3);
+}
+
+.secondary3-shade4 {
+  background: var(--brand-secondary3-shade4);
+}
+
+.secondary3-shade5 {
+  background: var(--brand-secondary3-shade5);
+}
+
+.secondary3-shade6 {
+  background: var(--brand-secondary3-shade6);
+}
+
+.secondary3-shade7 {
+  background: var(--brand-secondary3-shade7);
+}
+
+.secondary3-shade8 {
+  background: var(--brand-secondary3-shade8);
 }

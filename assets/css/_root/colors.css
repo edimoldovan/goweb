@@ -4,21 +4,38 @@
   --color-secondary: #ee5141;
   --color-secondary-glare: #ffe3e5;
 
-  --brand-primary1-hue: 219;
-  --brand-primary1-saturation: 100%;
-  --brand-primary1-lightness: 37%;
+  --brand-primary1-hue: 246;
+  --brand-primary1-saturation: 62%;
+  --brand-primary1-lightness: 24%;
 
-  --brand-primary2-hue: 196;
-  --brand-primary2-saturation: 73%;
-  --brand-primary2-lightness: 62%;
+  --brand-primary2-hue: 358;
+  --brand-primary2-saturation: 74%;
+  --brand-primary2-lightness: 54%;
+  
+  --brand-primary3-hue: 49;
+  --brand-primary3-saturation: 85%;
+  --brand-primary3-lightness: 54%;
 
-  --brand-primary3-hue: 10;
-  --brand-primary3-saturation: 100%;
-  --brand-primary3-lightness: 50%;
+  --brand-secondary1-hue: 197;
+  --brand-secondary1-saturation: 43%;
+  --brand-secondary1-lightness: 82%;
+  
+  --brand-secondary2-hue: 202;
+  --brand-secondary2-saturation: 68%;
+  --brand-secondary2-lightness: 35%;
+  
+  --brand-secondary3-hue: 24;
+  --brand-secondary3-saturation: 96%;
+  --brand-secondary3-lightness: 20%;
 
   --brand-primary1-light: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) var(--brand-primary1-lightness));
   --brand-primary2-light: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) var(--brand-primary2-lightness));
   --brand-primary3-light: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) var(--brand-primary3-lightness));
+
+  --brand-secondary1-light: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) var(--brand-secondary1-lightness));
+  --brand-secondary2-light: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) var(--brand-secondary2-lightness));
+  --brand-secondary3-light: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) var(--brand-secondary3-lightness));
+
   --color1-light: hsl(var(--brand-primary1-hue) 20% 95%);
   --color2-light: hsl(var(--brand-primary1-hue) 20% 85%);
   --color3-light: hsl(var(--brand-primary1-hue) 20% 80%);
@@ -33,6 +50,11 @@
   --brand-primary1-dark: hsl( var(--brand-primary1-hue) calc(var(--brand-primary1-saturation) / 1.1) calc(var(--brand-primary1-lightness) / 1.2) );
   --brand-primary2-dark: hsl( var(--brand-primary2-hue) calc(var(--brand-primary2-saturation) / 1.1) calc(var(--brand-primary2-lightness) / 1.2) );
   --brand-primary3-dark: hsl( var(--brand-primary3-hue) calc(var(--brand-primary3-saturation) / 1.1) calc(var(--brand-primary3-lightness) / 1.2) );
+
+  --brand-secondary1-dark: hsl( var(--brand-secondary1-hue) calc(var(--brand-secondary1-saturation) / 1.1) calc(var(--brand-secondary1-lightness) / 1.2) );
+  --brand-secondary2-dark: hsl( var(--brand-secondary2-hue) calc(var(--brand-secondary2-saturation) / 1.1) calc(var(--brand-secondary2-lightness) / 1.2) );
+  --brand-secondary3-dark: hsl( var(--brand-secondary3-hue) calc(var(--brand-secondary3-saturation) / 1.1) calc(var(--brand-secondary3-lightness) / 1.2) );
+
   --color1-dark: hsl(var(--brand-primary1-hue) 10% 10%);
   --color2-dark: hsl(var(--brand-primary1-hue) 10% 15%);
   --color3-dark: hsl(var(--brand-primary1-hue) 10% 20%);
@@ -51,25 +73,52 @@
   --brand-primary1-shade5: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 40%);
   --brand-primary1-shade6: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 37%);
   --brand-primary1-shade7: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 24%);
-  --brand-primary1-shade8: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 11%);
+  --brand-primary1-shade8: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 16%);
 
   --brand-primary2-shade1: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 92%);
   --brand-primary2-shade2: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 79%);
   --brand-primary2-shade3: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 66%);
-  --brand-primary2-shade4: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 53%);
+  --brand-primary2-shade4: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 54%);
   --brand-primary2-shade5: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 40%);
   --brand-primary2-shade6: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 37%);
   --brand-primary2-shade7: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 24%);
-  --brand-primary2-shade8: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 11%);
+  --brand-primary2-shade8: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 15%);
 
   --brand-primary3-shade1: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 92%);
   --brand-primary3-shade2: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 79%);
   --brand-primary3-shade3: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 66%);
-  --brand-primary3-shade4: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 53%);
+  --brand-primary3-shade4: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 54%);
   --brand-primary3-shade5: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 40%);
   --brand-primary3-shade6: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 37%);
   --brand-primary3-shade7: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 24%);
-  --brand-primary3-shade8: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 11%);
+  --brand-primary3-shade8: hsl(var(--brand-primary3-hue) var(--brand-primary3-saturation) 14%);
+
+  --brand-secondary1-shade1: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 92%);
+  --brand-secondary1-shade2: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 82%);
+  --brand-secondary1-shade3: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 77%);
+  --brand-secondary1-shade4: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 66%);
+  --brand-secondary1-shade5: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 55%);
+  --brand-secondary1-shade6: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 44%);
+  --brand-secondary1-shade7: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 33%);
+  --brand-secondary1-shade8: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 22%);
+
+  --brand-secondary2-shade1: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 95%);
+  --brand-secondary2-shade2: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 75%);
+  --brand-secondary2-shade3: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 65%);
+  --brand-secondary2-shade4: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 55%);
+  --brand-secondary2-shade5: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 45%);
+  --brand-secondary2-shade6: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 35%);
+  --brand-secondary2-shade7: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 25%);
+  --brand-secondary2-shade8: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 15%);
+
+  --brand-secondary3-shade1: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 80%);
+  --brand-secondary3-shade2: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 70%);
+  --brand-secondary3-shade3: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 60%);
+  --brand-secondary3-shade4: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 50%);
+  --brand-secondary3-shade5: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 40%);
+  --brand-secondary3-shade6: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 30%);
+  --brand-secondary3-shade7: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 20%);
+  --brand-secondary3-shade8: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 10%);
 }
 
 :root {
@@ -77,6 +126,9 @@
   --brand-primary1: var(--brand-primary1-light);
   --brand-primary2: var(--brand-primary2-light);
   --brand-primary3: var(--brand-primary3-light);
+  --brand-secondary1: var(--brand-secondary1-light);
+  --brand-secondary2: var(--brand-secondary2-light);
+  --brand-secondary3: var(--brand-secondary3-light);
   --color1: var(--color1-light);
   --color2: var(--color2-light);
   --color3: var(--color3-light);
@@ -95,6 +147,9 @@
       --brand-primary1: var(--brand-primary1-dark);
       --brand-primary2: var(--brand-primary2-dark);
       --brand-primary3: var(--brand-primary3-dark);
+      --brand-secondary1: var(--brand-secondary1-dark);
+      --brand-secondary2: var(--brand-secondary2-dark);
+      --brand-secondary3: var(--brand-secondary3-dark);
       --color1: var(--color1-dark);
       --color2: var(--color2-dark);
       --color3: var(--color3-dark);
@@ -113,6 +168,9 @@
   --brand-primary1: var(--brand-primary1-light);
   --brand-primary2: var(--brand-primary2-light);
   --brand-primary3: var(--brand-primary3-light);
+  --brand-secondary1: var(--brand-secondary1-light);
+  --brand-secondary2: var(--brand-secondary2-light);
+  --brand-secondary3: var(--brand-secondary3-light);
   --color1: var(--color1-light);
   --color2: var(--color2-light);
   --color3: var(--color3-light);
@@ -130,6 +188,9 @@
   --brand-primary1: var(--brand-primary1-dark);
   --brand-primary2: var(--brand-primary2-dark);
   --brand-primary3: var(--brand-primary3-dark);
+  --brand-secondary1: var(--brand-secondary1-dark);
+  --brand-secondary2: var(--brand-secondary2-dark);
+  --brand-secondary3: var(--brand-secondary3-dark);
   --color1: var(--color1-dark);
   --color2: var(--color2-dark);
   --color3: var(--color3-dark);
