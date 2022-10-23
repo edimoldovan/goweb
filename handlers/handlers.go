@@ -39,7 +39,22 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	// ps := r.Context().Value("params").(httprouter.Params)
 
 	if err := Tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
-		"Title":       "Web app with Go std",
+		"Title":       "Web app with Go",
+		"Importmaps":  config.Config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
+	}); err != nil {
+		fmt.Printf("ERR: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func Design(w http.ResponseWriter, r *http.Request) {
+	// getting params from the context
+	// ps := r.Context().Value("params").(httprouter.Params)
+
+	if err := Tmpl.ExecuteTemplate(w, "design", map[string]interface{}{
+		"Title":       "Web app with Go",
 		"Importmaps":  config.Config.Importmaps,
 		"Development": os.Getenv("G_WEB_ENV") == "development",
 	}); err != nil {

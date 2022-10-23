@@ -6,6 +6,7 @@ func GetTemplates() []string {
 	var templateFiles = []string{
 		// layluts
 		"./templates/layouts/home.html",
+		"./templates/layouts/design.html",
 		"./templates/layouts/bloghome.html",
 		"./templates/layouts/blogpost.html",
 		"./templates/layouts/blogposts.html",
