@@ -86,11 +86,6 @@ a:hover {
   text-decoration: none;
 }
 
-:focus {
-  outline: 2px solid;
-  outline-offset: 0.3ch;
-}
-
 :target {
   scroll-margin-top: 2ex;
 }

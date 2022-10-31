@@ -1,5 +1,69 @@
 {{define "designsystem"}}
-  
+
+  <div class="wrapper flow prose">
+    <h2>Standalone</h2>
+
+    <p>This is a control to make sure the component initializes as expected without an island.</p>
+
+    <vanilla-web-component class="demo-component">Vanilla web component</vanilla-web-component>
+
+    <h2>Defaults</h2>
+
+    <p>These islands are eagerly loaded and initialized.</p>
+
+    <is-land>
+      <vanilla-web-component class="demo-component">Vanilla web component</vanilla-web-component>
+    </is-land>
+
+    <p>Gnarly nesting</p>
+
+    <is-land>
+      <vanilla-web-component class="demo-component" custom-attribute some other attributes>
+        Vanilla web component 1a
+        <vanilla-web-component class="demo-component">Vanilla web component 1b</vanilla-web-component>
+        Vanilla web component 1c
+        <vanilla-web-component class="demo-component">Vanilla web component 1d</vanilla-web-component>
+      </vanilla-web-component>
+      <p>Testing A</p>
+      <vanilla-web-component class="demo-component">Vanilla web component 2</vanilla-web-component>
+      <p>Testing B</p>
+      <vanilla-web-component class="demo-component">Vanilla web component 3</vanilla-web-component>
+    </is-land>
+
+    <h2><code>on:visible</code></h2>
+    <is-land on:visible>
+      <vanilla-web-component class="demo-component">Vanilla web component</vanilla-web-component>
+    </is-land>
+
+    <h3>Works with &lt;details&gt;</h3>
+    <details>
+      <summary>The child content in this &lt;details&gt; will not be initialized until you open it</summary>
+
+      <is-land on:visible>
+        <vanilla-web-component class="demo-component">Vanilla web component</vanilla-web-component>
+      </is-land>
+    </details>
+
+    <h2><code>on:visible</code> nested group</h2>
+
+    <p>Parent island has <code>on:visible</code> but none of the child components have an explicit loading condition. They will inherit the loading conditions of all of the ancestors.</p>
+
+    <is-land on:visible>
+      <vanilla-web-component class="demo-component">Vanilla web component</vanilla-web-component>
+
+      Here’s a nested island:
+
+      <is-land autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
+        Petite Vue
+        <template data-island>
+          <button @click="count++">⬆️</button>
+          <button @click="count--">⬇️</button>
+          <span v-html="count">0</span>
+        </template>
+      </is-land>
+    </is-land>
+  </div>
+
   <div class="region flow section">
     <header class="scheme">
       <h3>Scheme</h3>
