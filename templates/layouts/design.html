@@ -3,11 +3,16 @@
 <html lang="en" color-scheme="auto">
 {{template "head" .}}
 <body>
-  {{template "importmaps" .}}
   <main class="flow">
     {{template "designsystem" .}}
   </div>
   {{template "wsreload" .}}
+
+  <script type="module">
+    import * as flatpickr from "flatpickr";
+    // Write main module code here, or as a separate file with a "src" attribute on the module script.
+    console.log(flatpickr);
+  </script>
 </body>
 </html>
 {{end}}

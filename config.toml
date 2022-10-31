@@ -3,7 +3,8 @@ base_url = "https://some.base.url"
 base_domain = "some.base.url"
 
 importmaps = [
-	{ name = "flatpickr", path = "/static/js/flatpickr.min.js" }
+	{ name = "flatpickr", path = "/static/js/flatpickr.min.js" },
+	{ name = "webcomponent", path = "/static/js/web-component.js" }
 ]
 
 private_importmaps = []
