@@ -143,23 +143,23 @@
 
 @media (prefers-color-scheme:dark) {
   :root {
-      color-scheme: dark;
-      --brand-primary1: var(--brand-primary1-dark);
-      --brand-primary2: var(--brand-primary2-dark);
-      --brand-primary3: var(--brand-primary3-dark);
-      --brand-secondary1: var(--brand-secondary1-dark);
-      --brand-secondary2: var(--brand-secondary2-dark);
-      --brand-secondary3: var(--brand-secondary3-dark);
-      --color1: var(--color1-dark);
-      --color2: var(--color2-dark);
-      --color3: var(--color3-dark);
-      --color4: var(--color4-dark);
-      --color5: var(--color5-dark);
-      --color6: var(--color6-dark);
-      --color7: var(--color7-dark);
-      --color8: var(--color8-dark);
-      --shadow-color: var(--shadow-color-dark);
-      --shadow-strength: var(--shadow-strength-dark);
+    color-scheme: dark;
+    --brand-primary1: var(--brand-primary1-dark);
+    --brand-primary2: var(--brand-primary2-dark);
+    --brand-primary3: var(--brand-primary3-dark);
+    --brand-secondary1: var(--brand-secondary1-dark);
+    --brand-secondary2: var(--brand-secondary2-dark);
+    --brand-secondary3: var(--brand-secondary3-dark);
+    --color1: var(--color1-dark);
+    --color2: var(--color2-dark);
+    --color3: var(--color3-dark);
+    --color4: var(--color4-dark);
+    --color5: var(--color5-dark);
+    --color6: var(--color6-dark);
+    --color7: var(--color7-dark);
+    --color8: var(--color8-dark);
+    --shadow-color: var(--shadow-color-dark);
+    --shadow-strength: var(--shadow-strength-dark);
   }
 }
 
