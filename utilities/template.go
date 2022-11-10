@@ -7,11 +7,13 @@ func GetTemplates() []string {
 		// layluts
 		"./templates/layouts/home.html",
 		"./templates/layouts/design.html",
+		"./templates/layouts/islands.html",
 		"./templates/layouts/bloghome.html",
 		"./templates/layouts/blogpost.html",
 		"./templates/layouts/blogposts.html",
 		// partials
 		"./templates/partials/designsystem.html",
+		"./templates/partials/islandsexamples.html",
 		"./templates/partials/head.html",
 		"./templates/partials/header.html",
 		"./templates/partials/products.html",

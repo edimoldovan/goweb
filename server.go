@@ -38,6 +38,7 @@ func main() {
 	// HTML routes
 	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
 	router.GET("/design", middlewares.Wrapper(chain.ThenFunc(handlers.Design)))
+	router.GET("/islands", middlewares.Wrapper(chain.ThenFunc(handlers.Islands)))
 	router.GET("/blog-home", middlewares.Wrapper(chain.ThenFunc(handlers.BlogHome)))
 	router.GET("/posts/:link", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPost)))
 	router.GET("/posts", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPosts)))

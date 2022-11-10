@@ -64,6 +64,21 @@ func Design(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func Islands(w http.ResponseWriter, r *http.Request) {
+	// getting params from the context
+	// ps := r.Context().Value("params").(httprouter.Params)
+
+	if err := Tmpl.ExecuteTemplate(w, "islands", map[string]interface{}{
+		"Title":       "Web app with Go",
+		"Importmaps":  config.Config.Importmaps,
+		"Development": os.Getenv("G_WEB_ENV") == "development",
+	}); err != nil {
+		fmt.Printf("ERR: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
 func BlogHome(w http.ResponseWriter, r *http.Request) {
 	if err := Tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
 		"Title":       "Blog -- Home",
