@@ -4,29 +4,29 @@
   --color-secondary: #ee5141;
   --color-secondary-glare: #ffe3e5;
 
-  --brand-primary1-hue: 216;
+  --brand-primary1-hue: 210;
   --brand-primary1-saturation: 100%;
   --brand-primary1-lightness: 50%;
 
-  --brand-primary2-hue: 358;
-  --brand-primary2-saturation: 74%;
-  --brand-primary2-lightness: 54%;
-  
-  --brand-primary3-hue: 49;
-  --brand-primary3-saturation: 85%;
-  --brand-primary3-lightness: 54%;
+  --brand-primary2-hue: 30;
+  --brand-primary2-saturation: 94%;
+  --brand-primary2-lightness: 55%;
 
-  --brand-secondary1-hue: 197;
-  --brand-secondary1-saturation: 43%;
-  --brand-secondary1-lightness: 82%;
-  
-  --brand-secondary2-hue: 202;
-  --brand-secondary2-saturation: 68%;
-  --brand-secondary2-lightness: 35%;
-  
-  --brand-secondary3-hue: 24;
-  --brand-secondary3-saturation: 96%;
-  --brand-secondary3-lightness: 20%;
+  --brand-primary3-hue: 284;
+  --brand-primary3-saturation: 51%;
+  --brand-primary3-lightness: 38%;
+
+  --brand-secondary1-hue: 85;
+  --brand-secondary1-saturation: 55%;
+  --brand-secondary1-lightness: 52%;
+
+  --brand-secondary2-hue: 358;
+  --brand-secondary2-saturation: 86%;
+  --brand-secondary2-lightness: 53%;
+
+  --brand-secondary3-hue: 48;
+  --brand-secondary3-saturation: 97%;
+  --brand-secondary3-lightness: 48%;
 
   --brand-primary1-light: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) var(--brand-primary1-lightness));
   --brand-primary2-light: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) var(--brand-primary2-lightness));
@@ -66,7 +66,7 @@
   --shadow-color-dark: var(--brand-primary1-hue) 40% 2%;
   --shadow-strength-dark: 50%;
 
-  --brand-primary1-shade1: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 92%);
+  --brand-primary1-shade1: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 87%);
   --brand-primary1-shade2: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 79%);
   --brand-primary1-shade3: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 66%);
   --brand-primary1-shade4: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 53%);
@@ -75,7 +75,7 @@
   --brand-primary1-shade7: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 24%);
   --brand-primary1-shade8: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 16%);
 
-  --brand-primary2-shade1: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 92%);
+  --brand-primary2-shade1: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 94%);
   --brand-primary2-shade2: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 79%);
   --brand-primary2-shade3: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 66%);
   --brand-primary2-shade4: hsl(var(--brand-primary2-hue) var(--brand-primary2-saturation) 54%);
@@ -102,7 +102,7 @@
   --brand-secondary1-shade7: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 33%);
   --brand-secondary1-shade8: hsl(var(--brand-secondary1-hue) var(--brand-secondary1-saturation) 22%);
 
-  --brand-secondary2-shade1: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 95%);
+  --brand-secondary2-shade1: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 86%);
   --brand-secondary2-shade2: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 75%);
   --brand-secondary2-shade3: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 65%);
   --brand-secondary2-shade4: hsl(var(--brand-secondary2-hue) var(--brand-secondary2-saturation) 55%);
@@ -118,7 +118,7 @@
   --brand-secondary3-shade5: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 40%);
   --brand-secondary3-shade6: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 30%);
   --brand-secondary3-shade7: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 20%);
-  --brand-secondary3-shade8: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 10%);
+  --brand-secondary3-shade8: hsl(var(--brand-secondary3-hue) var(--brand-secondary3-saturation) 13%);
 }
 
 :root {
