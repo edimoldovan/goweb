@@ -1,0 +1,53 @@
+@layer basic, invalid;
+
+@layer basic {
+  form {
+    align-items: end;
+    column-gap: 2ch;
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+  }
+
+  form > div {
+    display: inline-flex;
+    align-items: center;
+    gap: .75ch;
+  }
+
+  form label,
+  form input {
+    display: block;
+  }
+
+  input {
+    margin: 0.25rem 0;
+    padding: 0.5rem;
+    border: 2px solid var(--brand-primary1);
+  }
+
+  :focus-visible {
+    outline: none;
+    border: 2px solid var(--brand-secondary3);
+  }
+
+  input[type="checkbox"] {
+    float: left;
+    margin-right: 0.66rem;
+  }
+}
+
+@layer invalid {
+  input:invalid {
+    border: 2px solid var(--brand-secondary2);
+  }
+
+  label:has(+ input:invalid) {
+    color: var(--brand-secondary2);
+  }
+  
+  label:has(+ input:invalid)::before {
+    content: '✖ ';
+    color: var(--brand-secondary2);
+  }
+}

@@ -99,15 +99,3 @@ main:focus {
   background: var(--color8);
   color: var(--color3);
 }
-
-form {
-  display: flex;
-  align-items: center;
-  column-gap: 2ch;
-}
-
-form > div {
-  display: inline-flex;
-  align-items: center;
-  gap: .75ch;
-}

@@ -7,6 +7,7 @@
 
 @import 'global/reset.css';
 @import 'global/fonts.css';
+@import 'global/forms.css';
 @import 'global/variables.css';
 @import 'global/ratios.css';
 @import 'global/shadows.css';
@@ -27,6 +28,7 @@
 @import 'utilities/flow.css';
 @import 'utilities/region.css';
 @import 'utilities/wrapper.css';
+
 
 @import 'exceptions/others.css';
 

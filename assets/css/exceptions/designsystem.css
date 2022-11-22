@@ -15,9 +15,16 @@
   border: 2px solid hsl(var(--brand-primary1-hue) 10% 50% / 15%);
 }
 
-.ratios {
+.forms {
   display: flex;
   flex-flow: row wrap;
+  gap: 2ch;
+}
+
+.ratios {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
   gap: 2ch;
 }
 
