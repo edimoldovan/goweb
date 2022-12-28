@@ -29,6 +29,10 @@ func GetTemplates() []string {
 		"./templates/partials/blogfooter.html",
 		"./templates/partials/blogpostpartial.html",
 		"./templates/partials/blogpostsheader.html",
+		"./templates/partials/bloglastpost.html",
+
+		// posts
+		"./templates/partials/posts/not-blog.html",
 	}
 	return templateFiles
 }

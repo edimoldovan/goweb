@@ -5,7 +5,7 @@
   project: https://cube.fyi/css.html
 */
 
-html{
+html {
   block-size: 100%;
   background-color: var(--color1);
   color: var(--color8);
@@ -80,10 +80,11 @@ svg {
 
 a {
   color: currentcolor;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 :target {
@@ -92,10 +93,4 @@ a:hover {
 
 main:focus {
   outline: none;
-}
-
-/* Base selection styles that invert whatever colours are rendered */
-::selection {
-  background: var(--color8);
-  color: var(--color3);
 }

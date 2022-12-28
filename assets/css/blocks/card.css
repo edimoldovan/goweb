@@ -5,8 +5,3 @@
   border-radius: var(--border-radius);
   max-width: unset;
 }
-
-.card ::selection {
-  color: var(--color3);
-  background: var(--color8);
-}

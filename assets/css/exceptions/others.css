@@ -43,3 +43,36 @@
 .summary {
   --flow-space: clamp(1rem, 0.73rem + 1.36vw, 1.875rem);
 }
+
+.menu-main {
+  padding-top: 1rem;
+  gap: 20px;
+  display: flex;
+}
+
+.dot {
+  color: hsl(5deg 100% 50%);
+}
+
+.site-foot {
+  background: var(--color-dark);
+  color: var(--color8);
+  padding: var(--space-s-m);
+}
+
+.site-foot__inner{
+  align-items: center;
+  display: flex;
+  gap: var(--space-s-m);
+}
+
+.site-foot a {
+  background-color: var(--color8);
+  padding: .5rem;
+  border-radius: 5px;
+}
+
+.site-foot img {
+  height: 3rem;
+  width: 3rem;
+}

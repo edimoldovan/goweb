@@ -223,11 +223,6 @@ a:hover{
 main:focus {
   outline: none;
 }
-::selection{
-  background:var(--color-dark);
-  color:var(--color-light)
-}
-
 
 .dot {
   color: var(--highlight-color);
@@ -255,10 +250,6 @@ header > nav{
   color: var(--color-light);
   max-width: unset;
   padding: var(--space-m-l);
-}
-.card ::selection{
-  background:var(--color-secondary);
-  color:var(--color-dark)
 }
 .curve{
   fill:var(--spot-color,var(--color-light));
@@ -354,18 +345,6 @@ header > nav{
   font-weight:700;
   letter-spacing:var(--tracking-s);
   line-height:1
-}
-.site-foot{
-  padding: var(--space-s-m);
-}
-.site-foot__inner{
-  align-items: center;
-  display: flex;
-  gap: var(--space-s-m);
-}
-.site-foot svg{
-  height:3em;
-  width:3em
 }
 .grid{
   display:grid;
