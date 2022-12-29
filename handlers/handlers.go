@@ -80,10 +80,12 @@ func Islands(w http.ResponseWriter, r *http.Request) {
 }
 
 func BlogHome(w http.ResponseWriter, r *http.Request) {
+	currentTime := time.Now()
 	if err := Tmpl.ExecuteTemplate(w, "bloghome", map[string]interface{}{
 		"Title":       "Blog -- Home",
 		"Importmaps":  config.Config.Importmaps,
 		"Development": os.Getenv("G_WEB_ENV") == "development",
+		"Buildhash":   currentTime.Format("2006-01-02-15-04-05"),
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -93,10 +95,12 @@ func BlogHome(w http.ResponseWriter, r *http.Request) {
 
 func BlogPost(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
+	currentTime := time.Now()
 	if err := Tmpl.ExecuteTemplate(w, "blogpostnotbloglayout", map[string]interface{}{
 		"Title":       "Blog -- Post Title",
 		"Importmaps":  config.Config.Importmaps,
 		"Development": os.Getenv("G_WEB_ENV") == "development",
+		"Buildhash":   currentTime.Format("2006-01-02-15-04-05"),
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -105,10 +109,12 @@ func BlogPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func BlogPosts(w http.ResponseWriter, r *http.Request) {
+	currentTime := time.Now()
 	if err := Tmpl.ExecuteTemplate(w, "blogposts", map[string]interface{}{
 		"Title":       "Blog -- Post Lists",
 		"Importmaps":  config.Config.Importmaps,
 		"Development": os.Getenv("G_WEB_ENV") == "development",
+		"Buildhash":   currentTime.Format("2006-01-02-15-04-05"),
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
