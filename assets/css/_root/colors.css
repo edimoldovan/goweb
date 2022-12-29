@@ -44,8 +44,11 @@
   --color6-light: hsl(var(--brand-primary1-hue) 20% 45%);
   --color7-light: hsl(var(--brand-primary1-hue) 20% 30%);
   --color8-light: hsl(var(--brand-primary1-hue) 20% 20%);
+
   --shadow-color-light: var(--brand-primary1-hue) 3% 15%;
   --shadow-strength-light: 15%;
+
+  --svg-image-filter-contrast-light: 15%;
 
   --brand-primary1-dark: hsl( var(--brand-primary1-hue) calc(var(--brand-primary1-saturation) / 1.1) calc(var(--brand-primary1-lightness) / 1.2) );
   --brand-primary2-dark: hsl( var(--brand-primary2-hue) calc(var(--brand-primary2-saturation) / 1.1) calc(var(--brand-primary2-lightness) / 1.2) );
@@ -63,8 +66,11 @@
   --color6-dark: hsl(var(--brand-primary1-hue) 10% 55%);
   --color7-dark: hsl(var(--brand-primary1-hue) 10% 70%);
   --color8-dark: hsl(var(--brand-primary1-hue) 10% 80%);
+
   --shadow-color-dark: var(--brand-primary1-hue) 40% 2%;
   --shadow-strength-dark: 50%;
+
+  --svg-image-filter-contrast-dark: 85%;
 
   --brand-primary1-shade1: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 87%);
   --brand-primary1-shade2: hsl(var(--brand-primary1-hue) var(--brand-primary1-saturation) 79%);
@@ -139,6 +145,7 @@
   --color8: var(--color8-light);
   --shadow-color: var(--shadow-color-light);
   --shadow-strength: var(--shadow-strength-light);
+  --svg-image-filter-contrast: var(--svg-image-filter-contrast-light);
 }
 
 @media (prefers-color-scheme:dark) {
@@ -160,6 +167,7 @@
     --color8: var(--color8-dark);
     --shadow-color: var(--shadow-color-dark);
     --shadow-strength: var(--shadow-strength-dark);
+    --svg-image-filter-contrast: var(--svg-image-filter-contrast-dark);
   }
 }
 
@@ -181,6 +189,7 @@
   --color8: var(--color8-light);
   --shadow-color: var(--shadow-color-light);
   --shadow-strength: var(--shadow-strength-light);
+  --svg-image-filter-contrast: var(--svg-image-filter-contrast-light);
 }
 
 [color-scheme=dark] {
@@ -201,4 +210,5 @@
   --color8: var(--color8-dark);
   --shadow-color: var(--shadow-color-dark);
   --shadow-strength: var(--shadow-strength-dark);
+  --svg-image-filter-contrast: var(--svg-image-filter-contrast-dark);
 }

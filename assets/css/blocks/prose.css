@@ -1,6 +1,6 @@
 .prose {
-  /* --flow-space: var(--space-l-xl); */
-  --wrapper-max-width: 55ch;
+  --flow-space: var(--space-m-l);
+  /* --wrapper-max-width: 55ch; */
 }
 
 .prose :is(h2, h3, h4) + * {
@@ -23,4 +23,9 @@
   font-family: var(--font-base);
   font-style: normal;
   font-size: var(--step-1);
+}
+
+.prose code {
+  font-family: monospace;
+  color: var(--color6);
 }
