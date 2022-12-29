@@ -3,9 +3,6 @@
 {{define "notblogpost"}}
 <div class="wrapper flow prose">
   <h1>I have decided to not blog</h1>
-  <figure>
-    <img src="/static/images/No_motivationaiseo_art.jpg" />
-  </figure>
   <p class="summary-description">
     I have recently been reading a lot given that I had a lot of time on my hands. 
     Many of my readings have been about my work, what I'm passionate about in my work &mdash; how to build amazing experiences on the web and native platforms.
@@ -24,13 +21,31 @@
     Also, I would like to share the experience of building something from scratch, this not blog, so that whoever is curious, can follow how I build it.
   </p>
   <p>
-    For instance: the above <code>figure</code> with the colorful image and the one below look different only because the bottom one has a <code>figcaption</code>.
+    For instance, I would like to experiment and showcase how the <code>has()</code> selector works. For this I created the below <code>figure</code>:
   </p>
+  <pre>
+    &lt;figure&gt;
+      &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
+    &lt;/figure&gt;
+  </pre>
+  <p>which renders like this:</p>
+  <figure>
+    <img src="/static/images/nothing_at_all_aiseo_art.jpg" />
+  </figure>
+  <p>
+    the above <code>figure</code> with the colorful image and the one below look different only because the bottom one has a <code>figcaption</code>.
+  </p>
+  <pre>
+    &lt;figure&gt;
+      &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
+      &lt;figcaption&gt;image generated with &lt;a href="https://art.aiseo.ai" target="_blank"&gt;https://art.aiseo.ai&lt;/a&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+  </pre>
   <figure class="figure">
-    <img src="/static/images/No_motivationaiseo_art.jpg" />
+    <img src="/static/images/nothing_at_all_aiseo_art.jpg" />
     <figcaption>image generated with <a href="https://art.aiseo.ai" target="_blank">https://art.aiseo.ai</a></figcaption>
   </figure>
-  <p>Here&rsquo;s the code:</p>
+  <p>Here&rsquo;s the <span class="highlight">selector</span> that makes this possible (nb. stable Firefox seems to not support <code>has()</code> by default yet):</p>
   <pre>
     .prose <span class="highlight">figure:has(figcaption)</span> {
       background: var(--color8);
@@ -42,7 +57,7 @@
       gap: 1rem;
     }
   </pre>
-  <p>Stable Firefox seems to not support <code>has()</code> by default yet.</p>
+  <p>The browser will add the additional styling only to the <code>figure</code>s that have a <code>figcaption</code> style.</p>
   
   <p>
     So if you are interested in <code>Go</code>, <code>SwiftUI</code>, good <code>CSS</code> practices and on top of everything a very <code>iterative</code>, <code>lean</code> delivey approach follow the story here.
