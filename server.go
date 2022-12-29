@@ -54,10 +54,11 @@ func main() {
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
 	// static routes
+	f := utilities.GetExecutable()
 	if os.Getenv("G_WEB_ENV") == "development" {
-		router.ServeFiles("/static/*filepath", http.Dir("./public"))
+		router.ServeFiles("/static/*filepath", http.Dir(f+"public"))
 	} else {
-		fileServer := http.FileServer(http.Dir("public"))
+		fileServer := http.FileServer(http.Dir(f + "public"))
 		router.GET("/static/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 			w.Header().Set("Vary", "Accept-Encoding")
 			w.Header().Set("Cache-Control", "public, max-age=7776000")
