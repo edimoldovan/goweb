@@ -2,9 +2,7 @@ package config
 
 import (
 	"log"
-	"os"
-	"path/filepath"
-	"strings"
+	"main/utilities"
 
 	"github.com/BurntSushi/toml"
 )
@@ -26,13 +24,7 @@ var (
 )
 
 func LoadConfig() {
-	var dirAbsPath string
-	dirname, err := os.Executable()
-	if err == nil {
-		dirAbsPath = filepath.Dir(dirname)
-		// fmt.Println("executable path: " + dirAbsPath)
-	}
-	f := strings.Trim(dirAbsPath, "tmp") + "/config.toml"
+	f := utilities.GetExecutable() + "/config.toml"
 
 	if _, err := toml.DecodeFile(f, &Config); err != nil {
 		log.Fatalln("Reading config failed", err)
