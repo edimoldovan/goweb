@@ -3,6 +3,9 @@
 {{define "notblogpost"}}
 <div class="wrapper flow prose">
   <h1>I have decided to not blog</h1>
+  <figure>
+    <img src="/static/images/No_motivationaiseo_art.jpg" />
+  </figure>
   <p class="summary-description">
     I have recently been reading a lot given that I had a lot of time on my hands. 
     Many of my readings have been about my work, what I'm passionate about in my work &mdash; how to build amazing experiences on the web and native platforms.
@@ -11,11 +14,38 @@
     So I have quickly put together this not blog to share not posts here. Read along if you&rsquo;re curious what this crazy idea is about.
   </p>
   <h2>What is a not blog?</h2>
-  <p>I get an urge to try things out when I read about them. For example: I like a lot the <i><b><code>has()</code></b></i> CSS selector features. So I naturally want to try them out. But a traditional blog doesn&rsquo;t offer the opportunity to actually embed code easily into a post that in time also looks great great. 
+  <p>
+    I get an urge to try things out when I read about them. For example: I like a lot the <code>has()</code> CSS selector features. So I naturally want to try them out. But a traditional blog doesn&rsquo;t offer the opportunity to actually embed code easily into a post, like the features I&rsquo;m trying out.
   </p>
-  <p>Inside the flat a fruity voice was reading out a list of figures which had something to do with the production of pig iron. The voice came from an oblong metal plaque like a dulled mirror which formed part of the surface of the right-hand wall. Winston turned a switch and the voice sank somewhat, though the words were still distinguishable. The instrument (the telescreen, it was called) could be dimmed) but there was no way of shutting it off completely.</p>
-  <p>I could potentially embed some tool with code examples but I am not a big fan of those.</p>
-  <p>Also, I would like to share the experience of building something from scratch, in this case a not blog so that whoever is curious to read, can follow how I I build it.</p>
-  <p>So if you are interested in <code>Go</code>, good <code>CSS</code> practices and on top of everything a very <code>iterative</code>, <code>lean</code> approach follow the story here.</p>
+  <p>
+    I could embed some tool into the post with code examples but I am not a big fan of such tools.
+  </p>
+  <p>
+    Also, I would like to share the experience of building something from scratch, this not blog, so that whoever is curious, can follow how I build it.
+  </p>
+  <p>
+    For instance: the above <code>figure</code> with the colorful image and the one below look different only because the bottom one has a <code>figcaption</code>.
+  </p>
+  <figure class="figure">
+    <img src="/static/images/No_motivationaiseo_art.jpg" />
+    <figcaption>image generated with <a href="https://art.aiseo.ai" target="_blank">https://art.aiseo.ai</a></figcaption>
+  </figure>
+  <p>Here&rsquo;s the code:</p>
+  <pre>
+    .prose <span class="highlight">figure:has(figcaption)</span> {
+      background: var(--color8);
+      padding: 2rem;
+      max-width: 50ch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  </pre>
+  <p>Stable Firefox seems to not support the <code>has()</code> by default yet.</p>
+  
+  <p>
+    So if you are interested in <code>Go</code>, <code>SwiftUI</code>, good <code>CSS</code> practices and on top of everything a very <code>iterative</code>, <code>lean</code> delivey approach follow the story here.
+  </p>
 </div>
 {{end}}
