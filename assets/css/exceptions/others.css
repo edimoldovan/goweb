@@ -66,12 +66,6 @@
   gap: var(--space-xs-s);
 }
 
-.site-foot a {
-  /* background-color: var(--color8); */
-  /* padding: .5rem; */
-  /* border-radius: 5px; */
-}
-
 .site-foot img {
   height: var(--space-s-m);
   width: var(--space-s-m);

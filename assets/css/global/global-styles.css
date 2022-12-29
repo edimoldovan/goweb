@@ -94,3 +94,11 @@ a:hover {
 main:focus {
   outline: none;
 }
+
+pre {
+  font-family: var(--font-monospace);
+  font-size: var(--step-1);
+  tab-size: 4;
+  background-color: var(--color2);
+  padding-top: var(--space-s-m);
+}
