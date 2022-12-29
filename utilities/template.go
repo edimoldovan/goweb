@@ -1,38 +1,41 @@
 package utilities
 
+// currently used templates
 func GetTemplates() []string {
-	// currently used templates
+	f := GetExecutable()
+
 	// for now we declare them here upfront
 	var templateFiles = []string{
-		// layluts
-		"./templates/layouts/home.html",
-		"./templates/layouts/design.html",
-		"./templates/layouts/islands.html",
-		"./templates/layouts/bloghome.html",
-		"./templates/layouts/blogpost.html",
-		"./templates/layouts/blogposts.html",
+		// layouts
+		f + "/templates/layouts/home.html",
+		f + "/templates/layouts/design.html",
+		f + "/templates/layouts/islands.html",
+		f + "/templates/layouts/bloghome.html",
+		f + "/templates/layouts/blogpost.html",
+		f + "/templates/layouts/blogposts.html",
 		// partials
-		"./templates/partials/designsystem.html",
-		"./templates/partials/islandsexamples.html",
-		"./templates/partials/head.html",
-		"./templates/partials/header.html",
-		"./templates/partials/products.html",
-		"./templates/partials/prose.html",
-		"./templates/partials/tools.html",
-		"./templates/partials/importmaps.html",
-		"./templates/partials/wsreload.html",
+		f + "/templates/partials/designsystem.html",
+		f + "/templates/partials/islandsexamples.html",
+		f + "/templates/partials/head.html",
+		f + "/templates/partials/header.html",
+		f + "/templates/partials/products.html",
+		f + "/templates/partials/prose.html",
+		f + "/templates/partials/tools.html",
+		f + "/templates/partials/importmaps.html",
+		f + "/templates/partials/wsreload.html",
 
-		"./templates/partials/bloghead.html",
-		"./templates/partials/blogheader.html",
-		"./templates/partials/blogmain.html",
-		"./templates/partials/blogpostlist.html",
-		"./templates/partials/blogfooter.html",
-		"./templates/partials/blogpostpartial.html",
-		"./templates/partials/blogpostsheader.html",
-		"./templates/partials/bloglastpost.html",
+		f + "/templates/partials/bloghead.html",
+		f + "/templates/partials/blogheader.html",
+		f + "/templates/partials/blogmain.html",
+		f + "/templates/partials/blogpostlist.html",
+		f + "/templates/partials/blogfooter.html",
+		f + "/templates/partials/blogpostpartial.html",
+		f + "/templates/partials/blogpostsheader.html",
+		f + "/templates/partials/bloglastpost.html",
 
 		// posts
-		"./templates/partials/posts/not-blog.html",
+		f + "/templates/layouts/posts/not-blog-post-layout.html",
+		f + "/templates/partials/posts/not-blog-post.html",
 	}
 	return templateFiles
 }

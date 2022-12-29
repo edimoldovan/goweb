@@ -21,14 +21,14 @@ import (
 var upgrader = websocket.Upgrader{} // use default options
 
 func main() {
+	// config
+	config.LoadConfig()
+	log.Println("PostGres URL:", config.Config.PostGresConnectURL)
 	// read template files
 	templateFiles := utilities.GetTemplates()
 	// parse template files
 	handlers.Tmpl, _ = template.ParseFiles(templateFiles...)
-
-	// config
-	config.LoadConfig()
-
+	log.Println(handlers.Tmpl)
 	// router
 	router := httprouter.New()
 

@@ -93,7 +93,7 @@ func BlogHome(w http.ResponseWriter, r *http.Request) {
 
 func BlogPost(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
-	if err := Tmpl.ExecuteTemplate(w, "blogpost", map[string]interface{}{
+	if err := Tmpl.ExecuteTemplate(w, "blogpostnotbloglayout", map[string]interface{}{
 		"Title":       "Blog -- Post Title",
 		"Importmaps":  config.Config.Importmaps,
 		"Development": os.Getenv("G_WEB_ENV") == "development",

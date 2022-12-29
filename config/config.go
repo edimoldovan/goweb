@@ -2,6 +2,9 @@ package config
 
 import (
 	"log"
+	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/BurntSushi/toml"
 )
@@ -23,12 +26,18 @@ var (
 )
 
 func LoadConfig() {
-	f := "./config.toml"
+	var dirAbsPath string
+	dirname, err := os.Executable()
+	if err == nil {
+		dirAbsPath = filepath.Dir(dirname)
+		// fmt.Println("executable path: " + dirAbsPath)
+	}
+	f := strings.Trim(dirAbsPath, "tmp") + "/config.toml"
 
 	if _, err := toml.DecodeFile(f, &Config); err != nil {
 		log.Fatalln("Reading config failed", err)
 	}
 
 	// examples of config use
-	// log.Println("PostGres URL:", config.PostGresConnectURL)
+	// log.Println("PostGres URL:", config.Config.PostGresConnectURL)
 }
