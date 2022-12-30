@@ -67,7 +67,7 @@
 }
 
 .site-foot img {
-  height: var(--space-s-m);
-  width: var(--space-s-m);
+  height: var(--space-m-l);
+  width: var(--space-m-l);
   filter: invert(var(--svg-image-filter-contrast));
 }
