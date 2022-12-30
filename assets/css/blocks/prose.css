@@ -26,8 +26,8 @@
 }
 
 .prose code {
-  font-family: monospace;
   color: var(--color6);
+  font-family: var(--font-monospace);
 }
 
 .prose img {
