@@ -23,11 +23,11 @@
   <p>
     For instance, I would like to experiment and showcase how the <code>has()</code> selector works. For this I created the below <code>figure</code>:
   </p>
-  <pre>
-    &lt;figure&gt;
-      &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
-    &lt;/figure&gt;
-  </pre>
+  <pre><code>
+  &lt;figure&gt;
+    &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
+  &lt;/figure&gt;
+  </code></pre>
   <p>which renders like this:</p>
   <figure>
     <img src="/static/images/nothing_at_all_aiseo_art.jpg" alt="AI generated image, without figcaption" />
@@ -35,19 +35,19 @@
   <p>
     the above <code>figure</code> with the colorful image and the one below look different only because the bottom one has a <code>figcaption</code>.
   </p>
-  <pre>
-    &lt;figure&gt;
-      &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
-      &lt;figcaption&gt;image generated with &lt;a href="https://art.aiseo.ai" target="_blank"&gt;https://art.aiseo.ai&lt;/a&gt;&lt;/figcaption&gt;
-    &lt;/figure&gt;
-  </pre>
+  <pre><code>
+  &lt;figure&gt;
+    &lt;img src="/static/images/nothing_at_all_aiseo_art.jpg" /&gt;
+    &lt;figcaption&gt;image generated with &lt;a href="https://art.aiseo.ai" target="_blank"&gt;https://art.aiseo.ai&lt;/a&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  </code></pre>
   <figure class="figure">
     <img src="/static/images/nothing_at_all_aiseo_art.jpg" alt="AI generated image, with figcaption" />
     <figcaption>image generated with <a href="https://art.aiseo.ai" target="_blank">https://art.aiseo.ai</a></figcaption>
   </figure>
   <p>Here&rsquo;s the <span class="highlight">selector</span> that makes this possible (nb. stable Firefox seems to not support <code>has()</code> by default yet):</p>
-  <pre>
-    .prose <span class="highlight">figure:has(figcaption)</span> {
+  <pre><code>
+  .prose <span class="highlight">figure:has(figcaption)</span> {
       background: var(--color8);
       padding: 2rem;
       max-width: 50ch;
@@ -55,8 +55,8 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-    }
-  </pre>
+  }
+  </code></pre>
   <p>The browser will add the additional styling only to the <code>figure</code>s that have a <code>figcaption</code> style.</p>
   
   <p>
