@@ -25,9 +25,12 @@
   font-size: var(--step-1);
 }
 
-.prose code {
+.prose > code {
+  color: var(--color7);
+}
+
+.prose > p > code {
   color: var(--color6);
-  font-family: var(--font-monospace);
 }
 
 .prose img {
