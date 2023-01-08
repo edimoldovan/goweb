@@ -34,17 +34,9 @@ func main() {
 	chain := alice.New(middlewares.Logger)
 
 	// HTML routes
-	// router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
+	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
 	router.GET("/design", middlewares.Wrapper(chain.ThenFunc(handlers.Design)))
 	router.GET("/islands", middlewares.Wrapper(chain.ThenFunc(handlers.Islands)))
-
-	// router.GET("/not-posts/:link", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPost)))
-	// blog
-	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.BlogHome)))
-	router.GET("/not-posts", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPosts)))
-
-	// posts
-	router.GET("/not-posts/not-blog", middlewares.Wrapper(chain.ThenFunc(handlers.BlogPost)))
 
 	// JSON routes
 	router.GET("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APIBlogPosts)))
