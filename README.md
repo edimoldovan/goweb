@@ -4,7 +4,7 @@ A simple and opinionated web framework mostly based on the go standard library, 
 ## usage
 ```docs being updated on a regular basis, also becoming more detailed```
 
-Install [air](https://github.com/cosmtrek/air) then run `air server.go .air.toml`. This will build the executable into `tmp/` then run it. Details of what is run is in the `build.sh` file.
+Install [air](https://github.com/cosmtrek/air) then run `air .air.toml`. This will build the executable into `tmp/` then run it. Details of what is run is in the `build.sh` file.
 
 ## developer tooling
 - preconfigured `.air.toml` to be able to use it out of the box. Documentation on options available in the [air](https://github.com/cosmtrek/air) repository. Just run `air server.go .air.toml` to start the server app.
