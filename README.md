@@ -37,7 +37,7 @@ Design tokens are in a few files: defined colors, spacing values and text sizes,
 This done with `lightningcss` which can be installed like this `npm i -g lightningcss-cli` or any other way that makes the cli tool available to `npx`
 
 ## example configuration use 
-Parse and use `config.toml` to showcase some examples of how this is done.
+Use c`config/config.go` to showcase some examples of how configuration will be done. Later environment variables will also be transitioned here.
 
 ## use javascript import maps 
 JavaScript dependencies are installed with `npm` into the `assets/` folder, then minified/copied if needed into the `public` folder when the server starts. They are configured in the `config.toml` so that they become available as JavaScript import maps in the HTML head.
