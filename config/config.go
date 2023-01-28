@@ -1,35 +1,31 @@
 package config
 
-import (
-	"log"
-	"main/utilities"
-
-	"github.com/BurntSushi/toml"
-)
-
 type importmap struct {
 	Name string
 	Path string
 }
 
-type tomlConfig struct {
+type Config struct {
 	PostGresConnectURL string      `toml:"postgres_connect_url"`
 	BaseUrl            string      `toml:"base_url"`
 	BaseDomain         string      `toml:"base_domain"`
 	Importmaps         []importmap `toml:"importmaps"`
 }
 
-var (
-	Config tomlConfig
-)
-
-func LoadConfig() {
-	f := utilities.GetExecutable() + "/config.toml"
-
-	if _, err := toml.DecodeFile(f, &Config); err != nil {
-		log.Fatalln("Reading config failed", err)
+// TODO: rename to ENV and use env vars on here an nowhere else in the project
+func EnvConfig() Config {
+	config := Config{
+		PostGresConnectURL: "some postgres connection url",
+		BaseUrl:            "https://some.base.url",
+		BaseDomain:         "some.base.url",
+		Importmaps: []importmap{
+			{
+				Name: "flatpickr", Path: "/public/js/flatpickr.min.js",
+			},
+			{
+				Name: "webcomponent", Path: "/public/js/web-component.js",
+			},
+		},
 	}
-
-	// examples of config use
-	// log.Println("PostGres URL:", config.Config.PostGresConnectURL)
+	return config
 }

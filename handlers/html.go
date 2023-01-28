@@ -22,9 +22,10 @@ func DebugLog(value any) {
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
+	envConfig := config.EnvConfig()
 	if err := Tmpl.ExecuteTemplate(w, "home", map[string]interface{}{
 		"Title":       "Web app with Go",
-		"Importmaps":  config.Config.Importmaps,
+		"Importmaps":  envConfig.Importmaps,
 		"Development": os.Getenv("GO_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
@@ -50,9 +51,10 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 }
 
 func Design(w http.ResponseWriter, r *http.Request) {
+	envConfig := config.EnvConfig()
 	if err := Tmpl.ExecuteTemplate(w, "design", map[string]interface{}{
 		"Title":       "Web app with Go",
-		"Importmaps":  config.Config.Importmaps,
+		"Importmaps":  envConfig.Importmaps,
 		"Development": os.Getenv("GO_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)
@@ -62,9 +64,10 @@ func Design(w http.ResponseWriter, r *http.Request) {
 }
 
 func Islands(w http.ResponseWriter, r *http.Request) {
+	envConfig := config.EnvConfig()
 	if err := Tmpl.ExecuteTemplate(w, "islands", map[string]interface{}{
 		"Title":       "Web app with Go",
-		"Importmaps":  config.Config.Importmaps,
+		"Importmaps":  envConfig.Importmaps,
 		"Development": os.Getenv("GO_WEB_ENV") == "development",
 	}); err != nil {
 		fmt.Printf("ERR: %v\n", err)

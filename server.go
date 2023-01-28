@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"io/fs"
 	"log"
-	"main/config"
 	"main/handlers"
 	"main/middlewares"
 	"net/http"
@@ -26,9 +25,6 @@ var embededTemplates embed.FS
 var embededPublic embed.FS
 
 func main() {
-	// config
-	config.LoadConfig()
-
 	// pre-parse templates, embedded in server binary
 	handlers.Tmpl = template.Must(template.ParseFS(embededTemplates, "templates/layouts/*.html", "templates/partials/*.html"))
 
