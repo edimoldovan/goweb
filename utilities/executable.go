@@ -13,6 +13,6 @@ func GetExecutable() string {
 		dirAbsPath = filepath.Dir(dirname)
 	}
 	f := strings.Trim(dirAbsPath, "tmp")
-	// fmt.Println("executable path: " + f)
+
 	return f
 }

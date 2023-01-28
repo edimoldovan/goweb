@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"html/template"
 	"log"
 	"main/config"
@@ -15,18 +16,22 @@ import (
 	"github.com/justinas/alice"
 )
 
-// var templateFiles []string
-
 // var Tmpl *template.Template
 var upgrader = websocket.Upgrader{} // use default options
+
+//go:embed templates
+var embededTemplates embed.FS
+
+//go:embed public
+var embededPublic embed.FS
 
 func main() {
 	// config
 	config.LoadConfig()
-	// read template files
-	templateFiles := utilities.GetTemplates()
-	// parse template files
-	handlers.Tmpl, _ = template.ParseFiles(templateFiles...)
+
+	// pre-parse templates, embedded in server binary
+	handlers.Tmpl = template.Must(template.ParseFS(embededTemplates, "templates/layouts/*.html", "templates/partials/*.html"))
+
 	// router
 	router := httprouter.New()
 
@@ -43,13 +48,13 @@ func main() {
 	router.POST("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateBlogPost)))
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
-	// static routes
+	// static file routes
 	f := utilities.GetExecutable()
 	if os.Getenv("G_WEB_ENV") == "development" {
-		router.ServeFiles("/static/*filepath", http.Dir(f+"public"))
+		router.ServeFiles("/public/*filepath", http.Dir(f+"public"))
 	} else {
 		fileServer := http.FileServer(http.Dir(f + "public"))
-		router.GET("/static/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+		router.GET("/public/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 			w.Header().Set("Vary", "Accept-Encoding")
 			w.Header().Set("Cache-Control", "public, max-age=7776000")
 			r.URL.Path = p.ByName("filepath")
