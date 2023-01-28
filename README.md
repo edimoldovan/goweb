@@ -29,8 +29,9 @@ App is easily serving static files from `public` folder like this: `/public/some
 Basic design system included based on [CubeCSS](https://cube.fyi/). Key principles:
 - use progressive enhancement
 - structure the CSS in these four groups: composition styles, utilities, blocks and exceptions
-The most import part is that we should try to guide the browser to do what it does best (rendering) in a context that it finds itself in.
-Design system is composed of a few files: defined colors, spacing values and text sizes, along with a global reset and global styling to bring all browsers on the same page. These are used to build the actual, fluid, styling of the pages.
+The most important part is that we should try to guide the browser to do what it does best (rendering) in a context that it finds itself in.
+
+Design tokens are in a few files: defined colors, spacing values and text sizes, along with a global reset and global styling to bring all browsers on the same page. These are used to build the actual, fluid, styling of the pages.
 
 ## package and minify CSS
 This done with `lightningcss` which can be installed like this `npm i -g lightningcss-cli` or any other way that makes the cli tool available to `npx`
