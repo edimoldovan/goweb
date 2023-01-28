@@ -48,8 +48,6 @@ func main() {
 	router.POST("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateBlogPost)))
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
-	// static file routes
-	// f := utilities.GetExecutable()
 	// static routes, embedded in server binary
 	if public, err := fs.Sub(embededPublic, "public"); err == nil {
 		if os.Getenv("GO_WEB_ENV") == "development" {
