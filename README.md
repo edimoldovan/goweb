@@ -23,7 +23,7 @@ Examples for how to handle a few kinds of routes
 Go provides the ´html/template´ package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
 
 ## easily serve static files (css/js/images/etc)
-App is easily serving static files from `public` folder like this: `/public/some.file` available on `/public/some.file` url.
+App is easily serving static files from `public` folder like this: `/public/some.file` available on `/public/some.file` url. Also, static files are embedded into binary.
 
 ## better css
 Basic design system included based on [CubeCSS](https://cube.fyi/). Key principles:

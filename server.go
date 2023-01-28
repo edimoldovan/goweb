@@ -3,11 +3,11 @@ package main
 import (
 	"embed"
 	"html/template"
+	"io/fs"
 	"log"
 	"main/config"
 	"main/handlers"
 	"main/middlewares"
-	"main/utilities"
 	"net/http"
 	"os"
 
@@ -49,21 +49,26 @@ func main() {
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
 	// static file routes
-	f := utilities.GetExecutable()
-	if os.Getenv("G_WEB_ENV") == "development" {
-		router.ServeFiles("/public/*filepath", http.Dir(f+"public"))
+	// f := utilities.GetExecutable()
+	// static routes, embedded in server binary
+	if public, err := fs.Sub(embededPublic, "public"); err == nil {
+		if os.Getenv("GO_WEB_ENV") == "development" {
+			router.Handler("GET", "/public/*filepath", http.StripPrefix("/public", http.FileServer(http.FS(public))))
+		} else {
+			fileServer := http.FileServer(http.FS(public))
+			router.GET("/public/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+				w.Header().Set("Vary", "Accept-Encoding")
+				w.Header().Set("Cache-Control", "public, max-age=7776000")
+				r.URL.Path = p.ByName("filepath")
+				fileServer.ServeHTTP(w, r)
+			})
+		}
 	} else {
-		fileServer := http.FileServer(http.Dir(f + "public"))
-		router.GET("/public/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-			w.Header().Set("Vary", "Accept-Encoding")
-			w.Header().Set("Cache-Control", "public, max-age=7776000")
-			r.URL.Path = p.ByName("filepath")
-			fileServer.ServeHTTP(w, r)
-		})
+		panic(err)
 	}
 
 	// DEVELOPMENT only routes
-	if os.Getenv("G_WEB_ENV") == "development" {
+	if os.Getenv("GO_WEB_ENV") == "development" {
 		router.GET("/live", live)
 	}
 
