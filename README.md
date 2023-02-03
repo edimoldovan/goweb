@@ -20,7 +20,7 @@ Examples for how to handle a few kinds of routes
 - JWT examples, both issuing a new token at login and reading its claims from the request
 
 ## built in go templates for rendering nested html templates
-Go provides the ´html/template´ package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
+Go provides the `html/template package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
 
 ## easily serve static files (css/js/images/etc)
 App is easily serving static files from `public` folder like this: `/public/some.file` available on `/public/some.file` url. Also, static files are embedded into binary.
