@@ -33,6 +33,8 @@ func main() {
 
 	// middlewares
 	chain := alice.New(middlewares.Logger)
+	// jwt validation middleware chain
+	jwtChain := alice.New(middlewares.Logger, middlewares.VerifyToken)
 
 	// HTML routes
 	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
@@ -40,8 +42,9 @@ func main() {
 	router.GET("/islands", middlewares.Wrapper(chain.ThenFunc(handlers.Islands)))
 
 	// JSON routes
-	router.GET("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APIBlogPosts)))
-	router.POST("/api/posts", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateBlogPost)))
+	router.GET("/api/posts", middlewares.Wrapper(jwtChain.ThenFunc(handlers.APIBlogPosts)))
+	router.POST("/api/posts", middlewares.Wrapper(jwtChain.ThenFunc(handlers.APICreateBlogPost)))
+	// generate token
 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
 
 	// static routes, embedded in server binary

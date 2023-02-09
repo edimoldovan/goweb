@@ -2,10 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -42,24 +40,6 @@ func APIBlogPosts(w http.ResponseWriter, r *http.Request) {
 }
 
 func APICreateBlogPost(w http.ResponseWriter, r *http.Request) {
-	tokenString := strings.Split(r.Header.Get("Authorization"), " ")
-
-	token, tokenErr := jwt.Parse(tokenString[1], func(token *jwt.Token) (interface{}, error) {
-		// Don't forget to validate the alg is what you expect:
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-		}
-
-		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		return hmacSampleSecret, nil
-	})
-
-	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		fmt.Println(claims["foo"], claims["nbf"])
-	} else {
-		fmt.Println(tokenErr)
-	}
-
 	var post Post
 	jsonErr := json.NewDecoder(r.Body).Decode(&post)
 	if jsonErr != nil {
