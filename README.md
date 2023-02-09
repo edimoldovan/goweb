@@ -26,7 +26,7 @@ Examples for how to handle a few kinds of routes
 ###
 - JWT examples, both issuing a new token at login, then validationg and reading its claims from the request
 
-## Built in go templates for rendering nested html templates
+## Built-in go templates for rendering nested html templates
 ###
 Go provides the `html/template package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
 
