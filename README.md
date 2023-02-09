@@ -17,7 +17,9 @@ Even though Go STD provides this functionality out of the box, the [router](http
 Examples for how to handle a few kinds of routes
 - html output
 - JSON API output
-- JWT examples, both issuing a new token at login and reading its claims from the request
+
+## JWT middleware
+- JWT examples, both issuing a new token at login, then validationg and reading its claims from the request
 
 ## built in go templates for rendering nested html templates
 Go provides the `html/template package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
