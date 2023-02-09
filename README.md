@@ -15,7 +15,7 @@ Install [air](https://github.com/cosmtrek/air) then run `air .air.toml`. This wi
 - preconfigured `.air.toml` to be able to use it out of the box. Documentation on options available in the [air](https://github.com/cosmtrek/air) repository. Just run `air server.go .air.toml` to start the server app.
 - automatic page reload with a simple socket signalling enabled by [gorilla/websocket](https://github.com/gorilla/websocket)
 
-## Simple and gih-performing router
+## Simple and high-performance router
 ###
 Even though Go STD provides this functionality out of the box, the [router](https://github.com/julienschmidt/httprouter) ads a few features for convenince and developer experience
 Examples for how to handle a few kinds of routes
@@ -30,7 +30,8 @@ Examples for how to handle a few kinds of routes
 ###
 Go provides the `html/template package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
 
-## easily serve static files (css/js/images/etc)
+## Easily serve static files (css/js/images/etc)
+###
 App is easily serving static files from `public` folder like this: `/public/some.file` available on `/public/some.file` url. Also, static files are embedded into binary.
 
 ## Better CSS
