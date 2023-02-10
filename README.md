@@ -28,7 +28,7 @@ Examples for how to handle a few kinds of routes
 
 ## Built-in go templates for rendering nested html templates
 ###
-Go provides the `html/template package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
+Go provides the `html/template` package to handle html templating. The `templates` folder contains all layouts and partials, where a layout defines a page layout while a partial is a reusable html snippet. Also, templates are embededd into the built binary with `embed.FS` to simplify delivery to production.
 
 ## Easily serve static files (css/js/images/etc)
 ###
@@ -63,5 +63,4 @@ Example of middleware implementations, starting with a request logger
 ## Upcoming features
 ###
 - session handling, start with cookies
-- server side inclundes
 - database example, Posgres with [pgx](https://github.com/jackc/pgx)
