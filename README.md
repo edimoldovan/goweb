@@ -4,8 +4,6 @@ A simple and opinionated web framework mostly based on the go standard library, 
 
 ## Usage
 ###
-```docs being updated on a regular basis, also becoming more detailed```
-
 Make sure have `go` installed, preferabbly as recent as your platform of choice allows.
 
 Install [air](https://github.com/cosmtrek/air) then run `air .air.toml`. This will build the executable into `tmp/` then run it. Details of what air runs are in the `build.sh` file.
@@ -64,3 +62,4 @@ Example of middleware implementations, starting with a request logger
 ###
 - session handling, start with cookies
 - database example, Posgres with [pgx](https://github.com/jackc/pgx)
+- production build
