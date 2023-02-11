@@ -12,4 +12,7 @@ require (
 	github.com/tdewolff/minify v2.3.6+incompatible
 )
 
-require github.com/tdewolff/parse v2.3.4+incompatible // indirect
+require (
+	github.com/tdewolff/parse v2.3.4+incompatible // indirect
+	golang.org/x/net v0.6.0
+)
