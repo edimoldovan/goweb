@@ -5,24 +5,28 @@ import (
 	"html/template"
 	"io/fs"
 	"log"
+	"main/build"
+	"main/config"
 	"main/handlers"
 	"main/middlewares"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
 	"github.com/justinas/alice"
 )
 
-// var Tmpl *template.Template
-var upgrader = websocket.Upgrader{} // use default options
+// build function
+var cssBuild = build.BuildCSS()
 
 //go:embed templates
 var embededTemplates embed.FS
 
 //go:embed public
 var embededPublic embed.FS
+
+// var Tmpl *template.Template
+var upgrader = websocket.Upgrader{} // use default options
 
 func main() {
 	// pre-parse templates, embedded in server binary
@@ -49,8 +53,9 @@ func main() {
 
 	// static routes, embedded in server binary
 	if public, err := fs.Sub(embededPublic, "public"); err == nil {
-		if os.Getenv("GO_WEB_ENV") == "development" {
-			router.Handler("GET", "/public/*filepath", http.StripPrefix("/public", http.FileServer(http.FS(public))))
+		if config.IsDevelopment() {
+			// keep serving statiuc files from filesystem in development
+			router.ServeFiles("/public/*filepath", http.Dir("public"))
 		} else {
 			fileServer := http.FileServer(http.FS(public))
 			router.GET("/public/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
@@ -65,7 +70,7 @@ func main() {
 	}
 
 	// DEVELOPMENT only routes
-	if os.Getenv("GO_WEB_ENV") == "development" {
+	if config.IsDevelopment() {
 		router.GET("/live", live)
 	}
 
