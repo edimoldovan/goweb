@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"io/fs"
 	"log"
+	"main/build"
 	"main/handlers"
 	"main/middlewares"
 	"net/http"
@@ -15,14 +16,18 @@ import (
 	"github.com/justinas/alice"
 )
 
-// var Tmpl *template.Template
-var upgrader = websocket.Upgrader{} // use default options
-
 //go:embed templates
 var embededTemplates embed.FS
 
 //go:embed public
 var embededPublic embed.FS
+
+// var Tmpl *template.Template
+var upgrader = websocket.Upgrader{} // use default options
+
+func init() {
+	build.BuildCSS()
+}
 
 func main() {
 	// pre-parse templates, embedded in server binary
