@@ -22,10 +22,10 @@ func MinifyCSS(body string) string {
 	return result.String()
 }
 
-func BuildCSS() bool {
+func BuildCSS() {
 	content, err := ioutil.ReadFile("./assets/css/global.css")
 	if err != nil {
-		//Do something
+		panic(err)
 	}
 	lines := strings.Split(string(content), "\n")
 
@@ -38,9 +38,8 @@ func BuildCSS() bool {
 			path = strings.ReplaceAll(path, ";", "")
 			fileContent, err := ioutil.ReadFile(path)
 			if err != nil {
-				//Do something
+				panic(err)
 			}
-
 			if fileContent != nil {
 				nestedString = nestedString + string(fileContent)
 			}
@@ -57,6 +56,4 @@ func BuildCSS() bool {
 		panic(err)
 	}
 	defer minifiedGlobalCssFile.Close()
-
-	return true
 }

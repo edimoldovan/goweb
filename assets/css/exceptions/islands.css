@@ -37,7 +37,7 @@ is-land span {
 is-land[ready] {
   display: block;
   background-color: rgba(114, 233, 110, 0.2);
-  /* background-color: red; */
+  background-color: red;
   outline: 2px solid rgb(85, 173, 82);
 }
 .test-c-finish {

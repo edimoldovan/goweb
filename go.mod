@@ -9,12 +9,7 @@ require (
 	github.com/gorilla/websocket v1.5.0
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/justinas/alice v1.2.0
-	github.com/tdewolff/minify/v2 v2.12.4
+	github.com/tdewolff/minify v2.3.6+incompatible
 )
 
 require github.com/tdewolff/parse v2.3.4+incompatible // indirect
-
-require (
-	github.com/tdewolff/minify v2.3.6+incompatible
-	github.com/tdewolff/parse/v2 v2.6.4 // indirect
-)
