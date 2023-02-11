@@ -43,7 +43,7 @@ Design tokens are in a few files: defined colors, spacing values and text sizes,
 
 ## Nest, bundle and minify CSS
 ###
-This done with `lightningcss` which can be installed like this `npm i -g lightningcss-cli` or any other way that makes the cli tool available to `npx`
+This done with `github.com/tdewolff/minify` and some custom nesting.
 
 ## Example configuration use 
 ###

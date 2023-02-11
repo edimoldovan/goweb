@@ -1,5 +1,7 @@
 package config
 
+import "os"
+
 type importmap struct {
 	Name string
 	Path string
@@ -28,4 +30,8 @@ func EnvConfig() Config {
 		},
 	}
 	return config
+}
+
+func IsDevelopment() bool {
+	return os.Getenv("GO_WEB_ENV") == "development"
 }
