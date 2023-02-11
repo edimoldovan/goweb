@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log"
 	"main/build"
+	"main/config"
 	"main/handlers"
 	"main/middlewares"
 	"net/http"
