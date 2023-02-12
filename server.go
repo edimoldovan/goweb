@@ -64,69 +64,37 @@ func main() {
 	// pre-parse templates, embedded in server binary
 	handlers.Tmpl = template.Must(template.ParseFS(embededTemplates, "templates/layouts/*.html", "templates/partials/*.html"))
 
-	// router := http.NewServeMux()
+	// mux/router definition
+	mux := http.NewServeMux()
 
-	// middlewares
-	// chain := alice.New(middlewares.Logger)s
-	// // jwt validation middleware chain
-	// jwtChain := alice.New(middlewares.Logger, middlewares.VerifyToken)
-
-	http.Handle("/", middlewares.Logger(http.HandlerFunc(handlers.Home)))
-	http.HandleFunc("/design", handlers.Design)
-	http.HandleFunc("/islands", handlers.Islands)
-
-	if config.IsDevelopment() {
-		http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
-		http.Handle("/live", websocket.Handler(Live))
-	} else {
-		http.Handle("/public/", serveEmbedded(http.FileServer(http.FS(embededPublic))))
+	// public HTML route middleware stack
+	publicHTMLStack := []middlewares.Middleware{
+		middlewares.Logger,
 	}
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	// private JSON route middleware stack
+	privateJSONStack := []middlewares.Middleware{
+		middlewares.Logger,
+		middlewares.VerifyToken,
+	}
+
+	// HTML routes
+	mux.HandleFunc("/", middlewares.CompileMiddleware(handlers.Home, publicHTMLStack))
+	mux.HandleFunc("/design", handlers.Design)
+	mux.HandleFunc("/islands", handlers.Islands)
+
+	// JSON REST posts API resources
+	mux.HandleFunc("/api/posts", middlewares.CompileMiddleware(handlers.APIBlogPostsResource, privateJSONStack))
+
+	// JSON REST tokens API resources
+	mux.HandleFunc("/api/tokens", middlewares.CompileMiddleware(handlers.APITokensResources, publicHTMLStack))
+
+	if config.IsDevelopment() {
+		mux.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
+		mux.Handle("/live", websocket.Handler(Live))
+	} else {
+		mux.Handle("/public/", serveEmbedded(http.FileServer(http.FS(embededPublic))))
+	}
+
+	log.Fatal(http.ListenAndServe(":8000", mux))
 }
-
-// func main() {
-
-// 	// middlewares
-// 	chain := alice.New(middlewares.Logger)
-// 	// jwt validation middleware chain
-// 	jwtChain := alice.New(middlewares.Logger, middlewares.VerifyToken)
-
-// 	// HTML routes
-// 	router.GET("/", middlewares.Wrapper(chain.ThenFunc(handlers.Home)))
-// 	router.GET("/design", middlewares.Wrapper(chain.ThenFunc(handlers.Design)))
-// 	router.GET("/islands", middlewares.Wrapper(chain.ThenFunc(handlers.Islands)))
-
-// 	// JSON routes
-// 	router.GET("/api/posts", middlewares.Wrapper(jwtChain.ThenFunc(handlers.APIBlogPosts)))
-// 	router.POST("/api/posts", middlewares.Wrapper(jwtChain.ThenFunc(handlers.APICreateBlogPost)))
-// 	// generate token
-// 	router.POST("/api/tokens", middlewares.Wrapper(chain.ThenFunc(handlers.APICreateToken)))
-
-// // static routes, embedded in server binary
-// if public, err := fs.Sub(embededPublic, "public"); err == nil {
-// 	if config.IsDevelopment() {
-// 		// keep serving statiuc files from filesystem in development
-// 		router.ServeFiles("/public/*filepath", http.Dir("public"))
-// 	} else {
-// 		fileServer := http.FileServer(http.FS(public))
-// 		router.GET("/public/*filepath", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-// 			w.Header().Set("Vary", "Accept-Encoding")
-// 			w.Header().Set("Cache-Control", "public, max-age=7776000")
-// 			r.URL.Path = p.ByName("filepath")
-// 			fileServer.ServeHTTP(w, r)
-// 		})
-// 	}
-// } else {
-// 	panic(err)
-// }
-
-// 	// DEVELOPMENT only routes
-// 	if config.IsDevelopment() {
-// 		// router.GET("/live", live)
-// 		router.Handle("/live", "", live)
-// 	}
-
-// 	// HTTP server
-// 	log.Fatal(http.ListenAndServe(":8000", router))
-// }

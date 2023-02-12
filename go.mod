@@ -1,7 +1,7 @@
 module main
 
 // +heroku goVersion go1.19
-go 1.19
+go 1.20
 
 require (
 	github.com/go-session/session v3.1.2+incompatible
