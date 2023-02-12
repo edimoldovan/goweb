@@ -13,16 +13,15 @@ Install [air](https://github.com/cosmtrek/air) then run `air .air.toml`. This wi
 - preconfigured `.air.toml` to be able to use it out of the box. Documentation on options available in the [air](https://github.com/cosmtrek/air) repository. Just run `air server.go .air.toml` to start the server app.
 - automatic page reload with a simple socket signalling enabled by [gorilla/websocket](https://github.com/gorilla/websocket)
 
-## Simple and high-performance router
+## Simple routing
 ###
-Even though Go STD provides this functionality out of the box, the [router](https://github.com/julienschmidt/httprouter) ads a few features for convenince and developer experience
-Examples for how to handle a few kinds of routes
+Go STD provides this functionality out of the box. Examples for how to handle a few kinds of routes
 - html output
-- JSON API output
+- JSON API output using resource definitions instead of individual method-based routes
 
 ## JWT middleware
 ###
-- JWT examples, both issuing a new token at login, then validationg and reading its claims from the request
+- JWT examples, both issuing a new token at login, then validationg the JWT token and reading claims from the request
 
 ## Built-in go templates for rendering nested html templates
 ###
