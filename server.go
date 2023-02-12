@@ -2,12 +2,15 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
-	"io"
-	"io/fs"
 	"log"
+	"main/build"
+	"main/config"
 	"main/handlers"
+	"main/middlewares"
 	"net/http"
+	"strings"
 
 	"golang.org/x/net/websocket"
 )
@@ -18,63 +21,71 @@ var embededTemplates embed.FS
 //go:embed public
 var embededPublic embed.FS
 
-func EchoServer(ws *websocket.Conn) {
-	io.Copy(ws, ws)
+var reloaded = false
+
+func Live(ws *websocket.Conn) {
+	// var received string
+	for {
+		if !reloaded {
+			err := websocket.Message.Send(ws, "reload")
+			log.Println("reload sent")
+			if err != nil {
+				panic(err)
+			}
+			reloaded = true
+		}
+
+		// break
+	}
+}
+
+func serveEmbedded(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Vary", "Accept-Encoding")
+		w.Header().Set("Cache-Control", "public, max-age=7776000")
+		if r.URL.Path == "/" {
+			r.URL.Path = fmt.Sprintf("/%s/", "public")
+			log.Println(r.URL.Path)
+		} else {
+			b := strings.Split(r.URL.Path, "/")[1]
+			if b != "public" {
+				r.URL.Path = fmt.Sprintf("/%s%s", "public", r.URL.Path)
+			}
+		}
+		h.ServeHTTP(w, r)
+	})
+}
+
+func init() {
+	build.BuildCSS()
 }
 
 func main() {
 	// pre-parse templates, embedded in server binary
 	handlers.Tmpl = template.Must(template.ParseFS(embededTemplates, "templates/layouts/*.html", "templates/partials/*.html"))
 
-	http.HandleFunc("/", handlers.Home)
+	// router := http.NewServeMux()
 
-	// http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
+	// middlewares
+	// chain := alice.New(middlewares.Logger)s
+	// // jwt validation middleware chain
+	// jwtChain := alice.New(middlewares.Logger, middlewares.VerifyToken)
 
-	public, err := fs.Sub(embededPublic, "public")
-	if err != nil {
-		panic(err)
+	http.Handle("/", middlewares.Logger(http.HandlerFunc(handlers.Home)))
+	http.HandleFunc("/design", handlers.Design)
+	http.HandleFunc("/islands", handlers.Islands)
+
+	if config.IsDevelopment() {
+		http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
+		http.Handle("/live", websocket.Handler(Live))
+	} else {
+		http.Handle("/public/", serveEmbedded(http.FileServer(http.FS(embededPublic))))
 	}
-	http.Handle("/public", http.FileServer(http.FS(public)))
-	http.Handle("/live", websocket.Handler(EchoServer))
+
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
-// import (
-// 	"embed"
-// 	"html/template"
-// 	"io"
-// 	"io/fs"
-// 	"log"
-// 	"main/build"
-// 	"main/config"
-// 	"main/handlers"
-// 	"main/middlewares"
-// 	"net/http"
-
-// 	// "github.com/gorilla/websocket"
-// 	"github.com/julienschmidt/httprouter"
-// 	"github.com/justinas/alice"
-// 	"golang.org/x/net/websocket"
-// )
-
-// //go:embed templates
-// var embededTemplates embed.FS
-
-// //go:embed public
-// var embededPublic embed.FS
-
-// // var upgrader = websocket. // use default options
-
-// func init() {
-// 	build.BuildCSS()
-// }
-
 // func main() {
-// 	// pre-parse templates, embedded in server binary
-// 	handlers.Tmpl = template.Must(template.ParseFS(embededTemplates, "templates/layouts/*.html", "templates/partials/*.html"))
-
-// 	// router
-// 	router := httprouter.New()
 
 // 	// middlewares
 // 	chain := alice.New(middlewares.Logger)
@@ -118,35 +129,4 @@ func main() {
 
 // 	// HTTP server
 // 	log.Fatal(http.ListenAndServe(":8000", router))
-// }
-
-// func EchoServer(ws *websocket.Conn) {
-// 	io.Copy(ws, ws)
-// }
-
-// func live(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-
-// }
-
-// func live(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-// 	c, err := upgrader.Upgrade(w, r, nil)
-// 	if err != nil {
-// 		log.Print("upgrade:", err)
-// 		return
-// 	}
-// 	defer c.Close()
-
-// 	for {
-// 		mt, msg, err := c.ReadMessage()
-// 		if err != nil {
-// 			log.Println("read:", err)
-// 			break
-// 		}
-// 		log.Printf("received: %s", msg)
-// 		err = c.WriteMessage(mt, []byte("reload"))
-// 		if err != nil {
-// 			log.Println("write:", err)
-// 			break
-// 		}
-// 	}
 // }

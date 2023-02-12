@@ -1,17 +1,12 @@
 package handlers
 
 import (
-	"context"
 	"fmt"
 	"html/template"
 	"log"
 	"main/config"
-	"math/rand"
 	"net/http"
 	"os"
-	"strconv"
-
-	"github.com/go-session/session"
 )
 
 var Tmpl *template.Template
@@ -32,22 +27,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-}
-
-func Logout(w http.ResponseWriter, r *http.Request) {
-	store, err := session.Start(context.Background(), w, r)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	store.Flush()
-	err = store.Save()
-	if err != nil {
-		fmt.Fprint(w, err)
-		// return
-	}
-	rndstring := strconv.Itoa(rand.Intn(1000000))
-	http.Redirect(w, r, fmt.Sprintf(`/?rnd=%s`, rndstring), http.StatusFound)
 }
 
 func Design(w http.ResponseWriter, r *http.Request) {
