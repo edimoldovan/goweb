@@ -57,7 +57,10 @@ func serveEmbedded(h http.Handler) http.Handler {
 }
 
 func init() {
-	build.BuildCSS()
+	// only do this in development environment
+	if config.IsDevelopment() {
+		build.BuildCSS()
+	}
 }
 
 func main() {
