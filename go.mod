@@ -1,7 +1,7 @@
 module main
 
 // +heroku goVersion go1.19
-go 1.19
+go 1.20
 
 require (
 	github.com/go-session/session v3.1.2+incompatible
@@ -12,4 +12,7 @@ require (
 	github.com/tdewolff/minify v2.3.6+incompatible
 )
 
-require github.com/tdewolff/parse v2.3.4+incompatible // indirect
+require (
+	github.com/tdewolff/parse v2.3.4+incompatible // indirect
+	golang.org/x/net v0.6.0
+)

@@ -5,8 +5,12 @@
   var reconnected = false
   function connect() {
     ws = new WebSocket("ws://localhost:8000/live");
+
     ws.onopen = () => {
-      ws.send("init");
+      console.log("WS connected");
+      if (!reconnected)  {
+        ws.send("init");
+      }
     };
 
     ws.onmessage = (e) => {
@@ -15,6 +19,8 @@
           console.log("Reloading...")
           window.location.reload()
         }
+      } else {
+        console.log(e);
       }
     };
 
