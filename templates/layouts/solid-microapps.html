@@ -1,0 +1,40 @@
+{{define "solid-microapps"}}
+<!DOCTYPE html>
+<html lang="en" color-scheme="auto">
+{{template "head" .}}
+<body>
+  <main class="flow">
+    <div class="wrapper flow prose">
+      <h1>Solid micro-apps</h1>
+      <section>
+        <h2>First app</h2>
+        <div id="app1" style="display:inline-block;height:42px;"></div>
+      </section>
+      <section>
+        <h2>Second app</h2>
+        <div id="app2" style="display:inline-block;height:33px;"></div>
+      </section>
+    </div>
+  </main>
+  {{template "wsreload" .}}
+
+  <script type="module">
+    import html from "solid-js/html";
+    import { render } from "solid-js/web";
+
+    const App1 = () => {
+      // tagged template literals feel close enough to JSX (the defacto standard)
+      return html`<div>App1 render output</div>`;
+    }
+
+    const App2 = () => {
+      // tagged template literals feel close enough to JSX (the defacto standard)
+      return html`<div>App2 render output</div>`;
+    }
+
+    render(App1, document.getElementById("app1"));
+    render(App2, document.getElementById("app2"));
+  </script>
+</body>
+</html>
+{{end}}

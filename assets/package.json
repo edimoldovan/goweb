@@ -9,6 +9,7 @@
   "author": "ed",
   "license": "ISC",
   "dependencies": {
-    "flatpickr": "^4.6.13"
+    "flatpickr": "^4.6.13",
+    "solid-js": "^1.6.11"
   }
 }
