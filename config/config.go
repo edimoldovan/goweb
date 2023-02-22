@@ -8,10 +8,10 @@ type importmap struct {
 }
 
 type Config struct {
-	PostGresConnectURL string      `toml:"postgres_connect_url"`
-	BaseUrl            string      `toml:"base_url"`
-	BaseDomain         string      `toml:"base_domain"`
-	Importmaps         []importmap `toml:"importmaps"`
+	PostGresConnectURL string
+	BaseUrl            string
+	BaseDomain         string
+	Importmaps         []importmap
 }
 
 // TODO: rename to ENV and use env vars on here an nowhere else in the project
