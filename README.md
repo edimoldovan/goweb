@@ -1,6 +1,6 @@
 # go-web
 ###
-A simple and opinionated web framework mostly based on the go standard library, server side includes and javascript import maps
+A simple and opinionated web framework mostly based on the go standard library, scalable CSS approach (used in web.dev) and javascript import maps
 
 ## Usage
 ###
