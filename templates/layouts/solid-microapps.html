@@ -5,35 +5,91 @@
 <body>
   <main class="flow">
     <div class="wrapper flow prose">
-      <h1>Solid micro-apps</h1>
+      <h1>Javascript micro-apps</h1>
       <section>
-        <h2>First app</h2>
-        <div id="app1" style="display:inline-block;height:42px;"></div>
-      </section>
-      <section>
-        <h2>Second app</h2>
-        <div id="app2" style="display:inline-block;height:33px;"></div>
+        <h2>Vanilla app</h2>
+        <div id="vanilla"></div>
       </section>
     </div>
   </main>
   {{template "wsreload" .}}
 
   <script type="module">
-    import html from "solid-js/html";
-    import { render } from "solid-js/web";
+    var handler = function (instance) {
+      return {
+        get: function (obj, prop) {
+          if (["[object Object]", "[object Array]"].indexOf(Object.prototype.toString.call(obj[prop])) > -1) {
+            return new Proxy(obj[prop], handler(instance));
+          }
+          return obj[prop];
+          instance.render();
+        },
+        set: function (obj, prop, value) {
+          obj[prop] = value;
+          instance.render();
+          return true;
+        },
+        deleteProperty: function (obj, prop) {
+          delete obj[prop];
+          instance.render();
+          return true;
+    
+        }
+      };
+    };
+    
+    var Rue = function (options) {
+    
+      // Variables
+      var _this = this;
+      _this.elem = document.querySelector(options.selector);
+      var _data = new Proxy(options.data, handler(this));
+      _this.template = options.template;
+    
+      // Define setter and getter for data
+      Object.defineProperty(this, "data", {
+        get: function () {
+          return _data;
+        },
+        set: function (data) {
+          _data = new Proxy(data, handler(_this));
+          _this.render();
+          return true;
+        }
+      });
+    
+    };
+    
+    Rue.prototype.render = function () {
+      this.elem.innerHTML = this.template(this.data);
+    };
+    
+    var app = new Rue({
+      selector: "#vanilla",
+      data: {
+        heading: "My Todos",
+        todos: ["Swim", "Climb", "Jump", "Play"]
+      },
+      template: function (props) {
+        return `
+          <h3>${props.heading}</h3>
+          <ul>
+            ${props.todos.map(function (todo) {
+              return `<li>${todo}</li>`;
+            }).join("")}
+          </ul>`;
+      }
+    });
+    
+    // Render the initial UI
+    app.render();
+    
+    // After 3 seconds, update the data and render a new UI
+    setTimeout(function () {
+      app.data.todos.push("Take a nap... zzzzz");
+    }, 3000);
 
-    const App1 = () => {
-      // tagged template literals feel close enough to JSX (the defacto standard)
-      return html`<div>App1 render output</div>`;
-    }
 
-    const App2 = () => {
-      // tagged template literals feel close enough to JSX (the defacto standard)
-      return html`<div>App2 render output</div>`;
-    }
-
-    render(App1, document.getElementById("app1"));
-    render(App2, document.getElementById("app2"));
   </script>
 </body>
 </html>
