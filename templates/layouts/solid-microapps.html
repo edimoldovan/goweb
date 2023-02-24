@@ -10,6 +10,7 @@
         <h2>Vanilla app</h2>
         <div id="wizard-list"></div>
         <div id="wizard-count"></div>
+        <div id="new-app"></div>
       </section>
     </div>
   </main>
@@ -18,13 +19,7 @@
   <script type="module">
 
     function store (data = {}, name = "store") {
-      /**
-       * Emit a custom event
-       * @param  {String} type   The event type
-       * @param  {*}      detail Any details to pass along with the event
-       */
-      function emit (type) {
-    
+      function emit(type) {
         // Create a new event
         let event = new CustomEvent(type, {
           bubbles: true,
@@ -57,18 +52,11 @@
           }
         };
       }
-    
       return new Proxy(data, handler(name, data));
-    
     }
-    
-    // The element to inject our UI into
-    let wizardListSlot = document.querySelector("#wizard-list");
-    // Create reactive data store
-    let wizards = store(["Gandalf", "Merlin"], "wizards");
-    
+
     // The list template
-    function wizardList(props) {
+    function wizardListTemplate(props) {
       return `
         <h3>Wizards</h3>
         <ul>
@@ -78,103 +66,37 @@
         </ul>`;
     }
 
-    // The element to inject our UI into
-    let wizardCountSlot = document.querySelector("#wizard-count");
-
     // The counter template
-    function wizardCount(props) {
+    function wizardCountTemplate(props) {
       return `
         <h3>Wizard count</h3>
         <p>${props.length}</p>
         `;
     }
-    
-    // Render the UI
-    wizardListSlot.innerHTML = wizardList(wizards);
 
-    // Render the UI
-    wizardCountSlot.innerHTML = wizardCount(wizards);
-
-    // Reactively update the UI
-    document.addEventListener("wizards", function () {
-      wizardListSlot.innerHTML = wizardList(wizards);
-      wizardCountSlot.innerHTML = wizardCount(wizards);
-    });
-
-    // This will automatically update the UI
-    setTimeout(function () {
-      wizards.push("Ursula");
-    }, 3000);
-
-    /* var handler = function (instance) {
-      return {
-        get: function (obj, prop) {
-          if (["[object Object]", "[object Array]"].indexOf(Object.prototype.toString.call(obj[prop])) > -1) {
-            return new Proxy(obj[prop], handler(instance));
-          }
-          return obj[prop];
-          //instance.render(); // removed based on being after the return statement
-        },
-        set: function (obj, prop, value) {
-          obj[prop] = value;
-          instance.render();
-          return true;
-        },
-        deleteProperty: function (obj, prop) {
-          delete obj[prop];
-          instance.render();
-          return true;
-    
-        }
-      };
-    };
-    
-    var App = function (options) {
-      // Variables
+    var Component = function(slotSelector, template, data) {
       var _this = this;
-      _this.elem = document.querySelector(options.selector);
-      var _data = new Proxy(options.data, handler(this));
-      _this.template = options.template;
-    
-      // Define setter and getter for data
-      Object.defineProperty(this, "data", {
-        get: function () {
-          return _data;
-        },
-        set: function (data) {
-          _data = new Proxy(data, handler(_this));
-          _this.render();
-          
-          return true;
-        }
+      _this.elem = document.querySelector(slotSelector);
+      _this.elem.innerHTML = template(data);
+      document.addEventListener("wizards", () => {
+        _this.elem.innerHTML = template(data);
       });
     };
     
-    App.prototype.render = function () {
-      this.elem.innerHTML = this.template(this.data);
-    };
-    
-    var app = new App({
-      selector: "#vanilla",
-      data: ["Swim", "Climb", "Jump", "Play"],
-      template: function (props) {
-        return `
-          <h3>My TODOs</h3>
-          <ul>
-            ${props.map(function (todo) {
-              return `<li>${todo}</li>`;
-            }).join("")}
-          </ul>`;
-      }
-    });
-    
-    // Render the initial UI
-    app.render();
-    
-    // After 3 seconds, update the data and render a new UI
-    setTimeout(function () {
-      app.data.push("Take a nap... zzzzz");
-    }, 3000); */
+    // Create reactive data store
+    let wizards = store(["Gandalf", "Merlin"], "wizards");
+
+    // Render the wizard list app
+    let wizardListApp = new Component("#wizard-list", wizardListTemplate, wizards);
+
+    // Render the wizard count app
+    let wizardCountApp = new Component("#wizard-count", wizardCountTemplate, wizards);
+
+    // This will automatically update the UI
+    setTimeout(() => {
+      // can later be an async fetch from a server
+      wizards.push("Ursula");
+    }, 2000);
 
 
   </script>
