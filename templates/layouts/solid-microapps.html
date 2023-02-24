@@ -15,6 +15,7 @@
   {{template "wsreload" .}}
 
   <script type="module">
+
     var handler = function (instance) {
       return {
         get: function (obj, prop) {
@@ -22,7 +23,7 @@
             return new Proxy(obj[prop], handler(instance));
           }
           return obj[prop];
-          instance.render();
+          //instance.render(); // removed based on being after the return statement
         },
         set: function (obj, prop, value) {
           obj[prop] = value;
@@ -38,8 +39,7 @@
       };
     };
     
-    var Rue = function (options) {
-    
+    var App = function (options) {
       // Variables
       var _this = this;
       _this.elem = document.querySelector(options.selector);
@@ -54,27 +54,24 @@
         set: function (data) {
           _data = new Proxy(data, handler(_this));
           _this.render();
+          
           return true;
         }
       });
-    
     };
     
-    Rue.prototype.render = function () {
+    App.prototype.render = function () {
       this.elem.innerHTML = this.template(this.data);
     };
     
-    var app = new Rue({
+    var app = new App({
       selector: "#vanilla",
-      data: {
-        heading: "My Todos",
-        todos: ["Swim", "Climb", "Jump", "Play"]
-      },
+      data: ["Swim", "Climb", "Jump", "Play"],
       template: function (props) {
         return `
-          <h3>${props.heading}</h3>
+          <h3>My TODOs</h3>
           <ul>
-            ${props.todos.map(function (todo) {
+            ${props.map(function (todo) {
               return `<li>${todo}</li>`;
             }).join("")}
           </ul>`;
@@ -86,7 +83,7 @@
     
     // After 3 seconds, update the data and render a new UI
     setTimeout(function () {
-      app.data.todos.push("Take a nap... zzzzz");
+      app.data.push("Take a nap... zzzzz");
     }, 3000);
 
 
