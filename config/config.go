@@ -22,10 +22,13 @@ func EnvConfig() Config {
 		BaseDomain:         "some.base.url",
 		Importmaps: []importmap{
 			{
-				Name: "flatpickr", Path: "/public/js/flatpickr.min.js",
+				Name: "solid-js", Path: "https://cdn.skypack.dev/solid-js",
 			},
 			{
-				Name: "webcomponent", Path: "/public/js/web-component.js",
+				Name: "solid-js/html", Path: "https://cdn.skypack.dev/solid-js/html",
+			},
+			{
+				Name: "solid-js/web", Path: "https://cdn.skypack.dev/solid-js/web",
 			},
 		},
 	}
