@@ -8,7 +8,8 @@
       <h1>Javascript micro-apps</h1>
       <section>
         <h2>Vanilla app</h2>
-        <div id="vanilla"></div>
+        <div id="wizard-list"></div>
+        <div id="wizard-count"></div>
       </section>
     </div>
   </main>
@@ -16,7 +17,96 @@
 
   <script type="module">
 
-    var handler = function (instance) {
+    function store (data = {}, name = "store") {
+      /**
+       * Emit a custom event
+       * @param  {String} type   The event type
+       * @param  {*}      detail Any details to pass along with the event
+       */
+      function emit (type) {
+    
+        // Create a new event
+        let event = new CustomEvent(type, {
+          bubbles: true,
+          cancelable: true,
+        });
+    
+        // Dispatch the event
+        return document.dispatchEvent(event);
+      }
+    
+      function handler (name, data) {
+        return {
+          get: function (obj, prop) {
+            if (prop === "_isProxy") return true;
+            if (["object", "array"].includes(Object.prototype.toString.call(obj[prop]).slice(8, -1).toLowerCase()) && !obj[prop]._isProxy) {
+              obj[prop] = new Proxy(obj[prop], handler(name, data));
+            }
+            return obj[prop];
+          },
+          set: function (obj, prop, value) {
+            if (obj[prop] === value) return true;
+            obj[prop] = value;
+            emit(name);
+            return true;
+          },
+          deleteProperty: function (obj, prop) {
+            delete obj[prop];
+            emit(name);
+            return true;
+          }
+        };
+      }
+    
+      return new Proxy(data, handler(name, data));
+    
+    }
+    
+    // The element to inject our UI into
+    let wizardListSlot = document.querySelector("#wizard-list");
+    // Create reactive data store
+    let wizards = store(["Gandalf", "Merlin"], "wizards");
+    
+    // The list template
+    function wizardList(props) {
+      return `
+        <h3>Wizards</h3>
+        <ul>
+          ${props.map(function (wizard) {
+            return `<li>${wizard}</li>`;
+          }).join("")}
+        </ul>`;
+    }
+
+    // The element to inject our UI into
+    let wizardCountSlot = document.querySelector("#wizard-count");
+
+    // The counter template
+    function wizardCount(props) {
+      return `
+        <h3>Wizard count</h3>
+        <p>${props.length}</p>
+        `;
+    }
+    
+    // Render the UI
+    wizardListSlot.innerHTML = wizardList(wizards);
+
+    // Render the UI
+    wizardCountSlot.innerHTML = wizardCount(wizards);
+
+    // Reactively update the UI
+    document.addEventListener("wizards", function () {
+      wizardListSlot.innerHTML = wizardList(wizards);
+      wizardCountSlot.innerHTML = wizardCount(wizards);
+    });
+
+    // This will automatically update the UI
+    setTimeout(function () {
+      wizards.push("Ursula");
+    }, 3000);
+
+    /* var handler = function (instance) {
       return {
         get: function (obj, prop) {
           if (["[object Object]", "[object Array]"].indexOf(Object.prototype.toString.call(obj[prop])) > -1) {
@@ -84,7 +174,7 @@
     // After 3 seconds, update the data and render a new UI
     setTimeout(function () {
       app.data.push("Take a nap... zzzzz");
-    }, 3000);
+    }, 3000); */
 
 
   </script>
