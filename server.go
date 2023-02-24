@@ -66,7 +66,7 @@ func main() {
 	mux.HandleFunc("/", middlewares.CompileMiddleware(handlers.Home, publicHTMLStack))
 	mux.HandleFunc("/design", handlers.Design)
 	mux.HandleFunc("/islands", handlers.Islands)
-	mux.HandleFunc("/solid-microapps", handlers.SolidMicroApps)
+	mux.HandleFunc("/vanilla-microapps", handlers.VanillaMicroApps)
 
 	// JSON REST posts API resources
 	mux.HandleFunc("/api/posts", middlewares.CompileMiddleware(handlers.APIBlogPostsResource, privateJSONStack))
