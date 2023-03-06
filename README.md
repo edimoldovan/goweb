@@ -18,6 +18,7 @@ Install [air](https://github.com/cosmtrek/air) then run `air .air.toml`. This wi
 Go STD provides this functionality out of the box. Examples for how to handle a few kinds of routes
 - html output
 - JSON API output using resource definitions instead of individual method-based routes
+- pattern matching ability for various types of routes based on url pattern and method
 
 ## JWT middleware
 ###
@@ -29,7 +30,7 @@ Go provides the `html/template` package to handle html templating. The `template
 
 ## Easily serve static files (css/js/images/etc)
 ###
-App is easily serving static files from `public` folder like this: `/public/some.file` available on `/public/some.file` url. Also, static files are embedded into binary.
+App is easily serving static files from `public` folder like this: `/public/css/some.css` available on `/public/js/some.js` url. Also, static files are embedded into binary.
 
 ## Better CSS
 ###
@@ -55,7 +56,7 @@ Where needed, [ES Module Shims](https://ga.jspm.io/npm:es-module-shims@1.5.1/dis
 
 ## Middleware
 ###
-Example of middleware implementations, starting with a request logger
+Example of middleware implementations, starting with a request logger, JWT verify middleware
 
 ## Upcoming features
 ###
