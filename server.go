@@ -56,9 +56,9 @@ func init() {
 	router.Routes = []router.Route{
 		// HTML routes
 		router.CreateRoute("GET", "/", middlewares.CompileMiddleware(handlers.Home, publicHTMLStack)),
-		router.CreateRoute("GET", "/design", handlers.Design),
-		router.CreateRoute("GET", "/islands", handlers.Islands),
-		router.CreateRoute("GET", "/vanilla-microapps", handlers.VanillaMicroApps),
+		router.CreateRoute("GET", "/design", middlewares.CompileMiddleware(handlers.Design, publicHTMLStack)),
+		router.CreateRoute("GET", "/islands", middlewares.CompileMiddleware(handlers.Islands, publicHTMLStack)),
+		router.CreateRoute("GET", "/vanilla-microapps", middlewares.CompileMiddleware(handlers.VanillaMicroApps, publicHTMLStack)),
 		// JSON API routes
 		router.CreateRoute("GET", "/api/posts", middlewares.CompileMiddleware(handlers.APIBlogPostsResource, privateJSONStack)),
 	}
