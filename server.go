@@ -51,6 +51,7 @@ func Live(ws *websocket.Conn) {
 
 func init() {
 	var staticServer http.Handler
+	var stripPrefix string
 
 	router.Routes = []router.Route{
 		// HTML routes
@@ -65,13 +66,14 @@ func init() {
 	// only do this in development environment
 	if config.IsDevelopment() {
 		build.BuildCSS()
-
 		router.Routes = append(router.Routes, router.CreateRoute("GET", "/live", http.HandlerFunc(websocket.Handler(Live).ServeHTTP)))
 		staticServer = http.FileServer(http.Dir("./public"))
+		stripPrefix = "/public/"
 	} else {
 		staticServer = http.FileServer(http.FS(embededPublic))
+		stripPrefix = "/"
 	}
-	router.Routes = append(router.Routes, router.CreateRoute("GET", "/public/.*", http.StripPrefix("/public/", staticServer).ServeHTTP))
+	router.Routes = append(router.Routes, router.CreateRoute("GET", "/public/.*", http.StripPrefix(stripPrefix, staticServer).ServeHTTP))
 }
 
 func main() {
