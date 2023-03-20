@@ -11,8 +11,8 @@
 }
 
 .section__inner {
-  background: var(--spot-color, var(--color-dark));
-  color: var(--color8);
+  background: var(--color-neutral-2);
+  color: var(--color-neutral-7);
 }
 
 .section blockquote {

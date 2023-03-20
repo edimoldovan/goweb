@@ -6,8 +6,8 @@
 
 html {
   block-size: 100%;
-  background-color: var(--color1);
-  color: var(--color8);
+  background-color: var(--color-neutral-7);
+  color: var(--color-neutral-2);
 }
 
 body {
