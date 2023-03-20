@@ -34,7 +34,7 @@ func BuildCSS() {
 	nestedString := ""
 	for _, line := range lines {
 		if line != "" && line[0] == 64 {
-			path = fmt.Sprintf(`./assets/css/%s`, strings.ReplaceAll(strings.Split(line, " ")[1], "'", ""))
+			path = fmt.Sprintf(`./assets/css/%s`, strings.ReplaceAll(strings.Split(line, " ")[1], "\"", ""))
 			path = strings.ReplaceAll(path, ";", "")
 			fileContent, err := ioutil.ReadFile(path)
 			if err != nil {
