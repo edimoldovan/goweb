@@ -1,0 +1,76 @@
+function store (data = {}, name = "store") {
+  function emit(type) {
+    // Create a new event
+    let event = new CustomEvent(type, {
+      bubbles: true,
+      cancelable: true,
+    });
+
+    // Dispatch the event
+    return document.dispatchEvent(event);
+  }
+
+  function handler (name, data) {
+    return {
+      get: function (obj, prop) {
+        if (prop === "_isProxy") return true;
+        if (["object", "array"].includes(Object.prototype.toString.call(obj[prop]).slice(8, -1).toLowerCase()) && !obj[prop]._isProxy) {
+          obj[prop] = new Proxy(obj[prop], handler(name, data));
+        }
+        return obj[prop];
+      },
+      set: function (obj, prop, value) {
+        if (obj[prop] === value) return true;
+        obj[prop] = value;
+        emit(name);
+        return true;
+      },
+      deleteProperty: function (obj, prop) {
+        delete obj[prop];
+        emit(name);
+        return true;
+      }
+    };
+  }
+  return new Proxy(data, handler(name, data));
+}
+
+// The list template
+function wizardListTemplate(props) {
+  return `
+    <h3>Wizards</h3>
+    <ul>
+      ${props.map(function (wizard) {
+        return `<li>${wizard}</li>`;
+      }).join("")}
+    </ul>`;
+}
+
+// The counter template
+function wizardCountTemplate(props) {
+  return `
+    <h3>Wizard count: ${props.length}</h3>
+    `;
+}
+
+var Component = function(slotSelector, template, data) {
+  var _this = this;
+  _this.elem = document.querySelector(slotSelector);
+  _this.elem.innerHTML = template(data);
+  document.addEventListener("wizards", () => {
+    _this.elem.innerHTML = template(data);
+  });
+};
+
+// Create reactive data store
+let wizards = store(["Gandalf", "Merlin"], "wizards");
+
+// Render the wizard list app
+let wizardListApp = new Component("#wizard-list", wizardListTemplate, wizards);
+
+// Render the wizard count app
+let wizardCountApp = new Component("#wizard-count", wizardCountTemplate, wizards);
+
+document.querySelector("#add-wizard").addEventListener("click", function () {
+  wizards.push(`Ursula ${Math.random()}`);
+});

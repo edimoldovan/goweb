@@ -27,12 +27,6 @@ var publicHTMLStack = []middlewares.Middleware{
 	middlewares.Logger,
 }
 
-// private JSON route middleware stack
-var privateJSONStack = []middlewares.Middleware{
-	middlewares.Logger,
-	middlewares.VerifyToken,
-}
-
 func Live(ws *websocket.Conn) {
 	// var received string
 	for {
@@ -59,8 +53,7 @@ func init() {
 		router.CreateRoute("GET", "/design", middlewares.CompileMiddleware(handlers.Design, publicHTMLStack)),
 		router.CreateRoute("GET", "/islands", middlewares.CompileMiddleware(handlers.Islands, publicHTMLStack)),
 		router.CreateRoute("GET", "/vanilla-microapps", middlewares.CompileMiddleware(handlers.VanillaMicroApps, publicHTMLStack)),
-		// JSON API routes
-		router.CreateRoute("GET", "/api/posts", middlewares.CompileMiddleware(handlers.APIBlogPostsResource, privateJSONStack)),
+		router.CreateRoute("GET", "/talk", middlewares.CompileMiddleware(handlers.Talk, publicHTMLStack)),
 	}
 
 	// only do this in development environment

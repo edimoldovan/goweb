@@ -55,7 +55,6 @@
 }
 
 .site-foot {
-  background: var(--color-dark);
   padding: var(--space-s-m);
 }
 
@@ -69,4 +68,126 @@
   height: var(--space-m-l);
   width: var(--space-m-l);
   filter: invert(var(--svg-image-filter-contrast));
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.talk .row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs-s);
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.talk .column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs-s);
+  /* height: 100vh; */
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.talk .column p {
+  padding-top: var(--space-s-xl);
+}
+
+.talk .column footer {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-s);
+}
+
+.talk .column footer a {
+  font-size: var(--step--1);
+  padding-top: var(--space-s);
+  text-decoration: underline;
+}
+
+.talk img {
+  height: auto;
+  width: auto;
+}
+
+.talk .row .boxes div {
+  border: 1px solid var(--color-neutral-4);
+}
+
+.derived {
+  background-color: hsl(from #f06d06 h s l);
+}
+
+.gradient {
+  background-image: linear-gradient(
+    to right 
+    in oklch,
+    lch(50% 100 100), 
+    lch(50% 100 250)
+  );
+}
+
+.p3 {
+  background-color: color(display-p3 0 1 0);
+}
+
+.purple-oklch {
+  background-color: oklch(42.1% 0.21 328.6);
+}
+
+.purple-rgb {
+  background-color: rgb(128, 0, 128);
+}
+
+.purple-hsl {
+  background-color: hsl(300.27, 100%, 25%);
+}
+
+.no-gap {
+  gap: 0 !important;
+}
+
+.no-border div {
+  border: none !important;
+  width: 350px;
+  height: 350px;
+}
+
+.primary-button {
+  outline: none;
+  border: none;
+  background-color: var(--color-brand);
+  color: var(--color-neutral-2);
+  border-radius: 10px;
+  font-size: var(--step-4);
+  padding: .4em .8em;
+  /* padding: var(--space-s-xl) var(--space-l-2xl); */
+  transition: background .4s;
+}
+
+.primary-button:hover {
+  --color-brand: hsl(var(--color-dark-brand-hue) var(--color-dark-brand-saturation) calc(var(--color-dark-brand-lightness) - 10%));
+  --color-neutral-2: hsl(10 5% calc(var(--color-dark-brand-lightness) + 50%));
+}
+
+.primary-button-p3 {
+  outline: none;
+  border: none;
+  background-color: color(display-p3 1 0 0);
+  color: color(display-p3 .9 .9 .9);
+  border-radius: 10px;
+  font-size: var(--step-4);
+  padding: .4em .8em;
+  transition: background .4s;
+}
+
+.primary-button-p3:hover {
+  background-color: color(display-p3 .85 0 0);
+  color: color(display-p3 1 1 1);
 }

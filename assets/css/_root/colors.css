@@ -1,15 +1,15 @@
+
 * {
-  --color-light-brand-hue: 10;
+  --color-light-brand-hue: 0;
   --color-light-brand-saturation: 100%;
   --color-light-brand-lightness: 49%;
   --color-light-brand: hsl(var(--color-light-brand-hue) var(--color-light-brand-saturation) var(--color-light-brand-lightness));
   
-  --color-dark-brand-hue: 10;
+  --color-dark-brand-hue: 0;
   --color-dark-brand-saturation: 100%;
   --color-dark-brand-lightness: 51.45%;
   --color-dark-brand: hsl(var(--color-dark-brand-hue) var(--color-dark-brand-saturation) var(--color-dark-brand-lightness));
 
-  
   --color-light-secondary-1-hue: 275;
   --color-light-secondary-1-saturation: 70%;
   --color-light-secondary-1-lightness: 50%;

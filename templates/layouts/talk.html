@@ -1,0 +1,98 @@
+{{define "talk"}}
+<!DOCTYPE html>
+<html lang="en" color-scheme="auto">
+{{template "head" .}}
+<body>
+  <main class="flow">
+    <div class="wrapper flow prose">
+      <section class="talk">
+        
+        <div class="row">
+          <img src="/public/images/talk/colors-1.png" />
+          <img src="/public/images/talk/colors-2.png" />
+          <img src="/public/images/talk/coca.png" />
+        </div>
+
+        <div class="row">
+          <img src="/public/images/talk/green-font.png" />
+        </div>
+
+        <div class="row">
+          <img src="/public/images/talk/red-font.png" />
+        </div>
+
+        <div class="row">
+          <img src="/public/images/talk/result-1.png" />
+          <img src="/public/images/talk/result-2.png" />
+        </div>
+
+        <div class="row">
+          <img src="/public/images/talk/menu.png" />
+        </div>
+
+        <div class="row">
+          <h4>Brand colors</h4>
+          <section class="boxes">
+            <div class="brand"></div>
+            <div class="secondary1"></div>
+            <div class="secondary2"></div>
+            <div class="secondary3"></div>
+          </section>
+          <h4>Neutral colors</h4>
+          <section class="boxes">
+            <div class="surface1"></div>
+            <div class="surface2"></div>
+            <div class="surface3"></div>
+            <div class="surface4"></div>
+            <div class="surface5"></div>
+            <div class="surface6"></div>
+            <div class="surface7"></div>
+            <div class="surface8"></div>
+          </section>
+        </div>
+
+        <div class="row">
+          <button class="primary-button">Go try it out!</button>
+        </div>
+
+        <div class="row">
+          <button class="primary-button-p3">Go try it out!</button>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <h1>Responsive example, or actually fluid</h1>
+            <p>Let&rsquo;s resize the space the broser page see what happens. Keep in mind there are no media queries involved in this exercise.</p>
+            <footer>
+              <a target="_blank" href="https://utopia.fyi/type/calculator?c=320,16,1.2,1350,20,1.414,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12">Fluid type</a>
+              <a target="_blank" href="https://utopia.fyi/space/calculator?c=320,16,1.2,1350,20,1.414,8,1,&s=0.75|0.5|0.25,2|3|5|8|13,s-l|l-2xl|xl-2xl|s-xl&g=s,l,xl,12">Fluid space</a>
+            </footer>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <h1>Simple interactive store</h1>
+            <div id="wizard-list"></div>
+            <div id="wizard-count"></div>
+            <div id="new-app"></div>
+            <button id="add-wizard">Add wizard</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <h1>Go server</h1>
+            <p>Very little dependencies, easy to build and ship in one single executable.</p>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+  {{template "wsreload" .}}
+
+  <script type="module" src="/public/js/interactive.js"></script>
+</body>
+</html>
+{{end}}

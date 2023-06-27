@@ -67,10 +67,11 @@ func VanillaMicroApps(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
-func Dashboard(w http.ResponseWriter, r *http.Request) {
+
+func Talk(w http.ResponseWriter, r *http.Request) {
 	envConfig := config.EnvConfig()
-	if err := Tmpl.ExecuteTemplate(w, "dashboard", map[string]interface{}{
-		"Title":       "Web app with Go",
+	if err := Tmpl.ExecuteTemplate(w, "talk", map[string]interface{}{
+		"Title":       "Visuals, interaction and shipping it all to the browsers",
 		"Importmaps":  envConfig.Importmaps,
 		"Development": os.Getenv("GO_WEB_ENV") == "development",
 	}); err != nil {
