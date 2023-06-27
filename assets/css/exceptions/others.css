@@ -96,7 +96,7 @@ html {
 }
 
 .talk .column p {
-  padding-top: var(--space-s-xl);
+  padding-top: var(--space-3xs-xl);
 }
 
 .talk .column footer {
