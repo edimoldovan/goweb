@@ -10,8 +10,6 @@ import (
 	"main/middlewares"
 	"main/router"
 	"net/http"
-
-	"golang.org/x/net/websocket"
 )
 
 //go:embed templates
@@ -27,26 +25,23 @@ var publicHTMLStack = []middlewares.Middleware{
 	middlewares.Logger,
 }
 
-func Live(ws *websocket.Conn) {
-	// var received string
-	for {
-		if !reloaded {
-			err := websocket.Message.Send(ws, "reload")
-			log.Println("reload sent")
-			if err != nil {
-				panic(err)
-			}
-			reloaded = true
-		}
+// func Live(ws *websocket.Conn) {
+// 	// var received string
+// 	for {
+// 		if !reloaded {
+// 			err := websocket.Message.Send(ws, "reload")
+// 			log.Println("reload sent")
+// 			if err != nil {
+// 				panic(err)
+// 			}
+// 			reloaded = true
+// 		}
 
-		// break
-	}
-}
+// 		// break
+// 	}
+// }
 
 func init() {
-	var staticServer http.Handler
-	var stripPrefix string
-
 	router.Routes = []router.Route{
 		// HTML routes
 		router.CreateRoute("GET", "/", middlewares.CompileMiddleware(handlers.Home, publicHTMLStack)),
@@ -56,10 +51,12 @@ func init() {
 		router.CreateRoute("GET", "/talk", middlewares.CompileMiddleware(handlers.Talk, publicHTMLStack)),
 	}
 
+	var staticServer http.Handler
+	var stripPrefix string
 	// only do this in development environment
 	if config.IsDevelopment() {
 		build.BuildCSS()
-		router.Routes = append(router.Routes, router.CreateRoute("GET", "/live", http.HandlerFunc(websocket.Handler(Live).ServeHTTP)))
+		// router.Routes = append(router.Routes, router.CreateRoute("GET", "/live", http.HandlerFunc(websocket.Handler(Live).ServeHTTP)))
 		staticServer = http.FileServer(http.Dir("./public"))
 		stripPrefix = "/public/"
 	} else {
