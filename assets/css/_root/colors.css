@@ -2,12 +2,12 @@
 * {
   --color-light-brand-hue: 0;
   --color-light-brand-saturation: 100%;
-  --color-light-brand-lightness: 49%;
+  --color-light-brand-lightness: 50%;
   --color-light-brand: hsl(var(--color-light-brand-hue) var(--color-light-brand-saturation) var(--color-light-brand-lightness));
   
   --color-dark-brand-hue: 0;
   --color-dark-brand-saturation: 100%;
-  --color-dark-brand-lightness: 51.45%;
+  --color-dark-brand-lightness: 50%;
   --color-dark-brand: hsl(var(--color-dark-brand-hue) var(--color-dark-brand-saturation) var(--color-dark-brand-lightness));
 
   --color-light-secondary-1-hue: 275;
@@ -60,30 +60,30 @@
   --color-dark-secondary-5-lightness: 52.5%;
   --color-dark-secondary-5: hsl(var(--color-dark-secondary-5-hue) var(--color-dark-secondary-5-saturation) var(--color-dark-secondary-5-lightness));
   
-  --color-light-neutral-1: hsl(10 5% 1%);
-  --color-light-neutral-2: hsl(10 5% 10%);
-  --color-light-neutral-3: hsl(10 5% 20%);
-  --color-light-neutral-4: hsl(10 5% 40%);
-  --color-light-neutral-5: hsl(10 5% 60%);
-  --color-light-neutral-6: hsl(10 5% 80%);
-  --color-light-neutral-7: hsl(10 5% 90%);
-  --color-light-neutral-8: hsl(10 5% 99%);
+  --color-light-neutral-1: hsl(var(--color-light-brand-hue) 10% 1%);
+  --color-light-neutral-2: hsl(var(--color-light-brand-hue) 10% 10%);
+  --color-light-neutral-3: hsl(var(--color-light-brand-hue) 10% 20%);
+  --color-light-neutral-4: hsl(var(--color-light-brand-hue) 10% 40%);
+  --color-light-neutral-5: hsl(var(--color-light-brand-hue) 10% 60%);
+  --color-light-neutral-6: hsl(var(--color-light-brand-hue) 10% 80%);
+  --color-light-neutral-7: hsl(var(--color-light-brand-hue) 10% 90%);
+  --color-light-neutral-8: hsl(var(--color-light-brand-hue) 10% 99%);
   
-  --color-dark-neutral-1: hsl(10 5% 99%);
-  --color-dark-neutral-2: hsl(10 5% 90%);
-  --color-dark-neutral-3: hsl(10 5% 80%);
-  --color-dark-neutral-4: hsl(10 5% 60%);
-  --color-dark-neutral-5: hsl(10 5% 40%);
-  --color-dark-neutral-6: hsl(10 5% 20%);
-  --color-dark-neutral-7: hsl(10 5% 10%);
-  --color-dark-neutral-8: hsl(10 5% 1%);
+  --color-dark-neutral-1: hsl(var(--color-dark-brand-hue) 10% 99%);
+  --color-dark-neutral-2: hsl(var(--color-dark-brand-hue) 10% 90%);
+  --color-dark-neutral-3: hsl(var(--color-dark-brand-hue) 10% 80%);
+  --color-dark-neutral-4: hsl(var(--color-dark-brand-hue) 10% 60%);
+  --color-dark-neutral-5: hsl(var(--color-dark-brand-hue) 10% 40%);
+  --color-dark-neutral-6: hsl(var(--color-dark-brand-hue) 10% 20%);
+  --color-dark-neutral-7: hsl(var(--color-dark-brand-hue) 10% 10%);
+  --color-dark-neutral-8: hsl(var(--color-dark-brand-hue) 10% 1%);
   
 
-  --shadow-color-light: var(--color-light-brand-hue) 3% 15%;
+  --shadow-color-light: var(--color-light-brand-hue) 50% 35%;
   --shadow-strength-light: 15%;
   --svg-image-filter-contrast-light: 15%;
 
-  --shadow-color-dark: var(--color-dark-brand-hue) 40% 2%;
+  --shadow-color-dark: var(--color-dark-brand-hue) 50% 20%;
   --shadow-strength-dark: 50%;
   --svg-image-filter-contrast-dark: 85%;
 }

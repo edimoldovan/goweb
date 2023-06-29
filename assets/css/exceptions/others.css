@@ -114,6 +114,7 @@ html {
 .talk img {
   height: auto;
   width: auto;
+  max-width: 550px;
 }
 
 .talk .row .boxes div {
@@ -168,7 +169,7 @@ html {
   font-size: var(--step-4);
   padding: .4em .8em;
   /* padding: var(--space-s-xl) var(--space-l-2xl); */
-  transition: background .4s;
+  box-shadow: var(--shadow-5);
 }
 
 .primary-button:hover {
@@ -180,14 +181,13 @@ html {
   outline: none;
   border: none;
   background-color: color(display-p3 1 0 0);
-  color: color(display-p3 .9 .9 .9);
+  color: color(display-p3 0.9 0.9 0.9);
   border-radius: 10px;
   font-size: var(--step-4);
   padding: .4em .8em;
-  transition: background .4s;
 }
 
 .primary-button-p3:hover {
-  background-color: color(display-p3 .85 0 0);
+  background-color: color(display-p3 0.90 0 0);
   color: color(display-p3 1 1 1);
 }
