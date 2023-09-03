@@ -1,4 +1,4 @@
-# go-web
+# goweb
 ###
 A simple and opinionated web framework mostly based on the go standard library, scalable CSS approach (used in web.dev) and javascript import maps
 
